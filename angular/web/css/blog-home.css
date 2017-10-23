@@ -27,9 +27,23 @@ h2 {
 }
 
 .btn-primary:hover {
-  background-color: #C582D5;
-  border-color: #C582D5;
+  background-color: #c8b0ff;
+  border-color: #c8b0ff;
   color: #fff;
+}
+
+.card {
+  border: 1px solid #FFD6D6;
+}
+
+.card-header {
+  background-color: #FCEFEE;
+  border-bottom: 1px solid #FFEED0;
+}
+
+.card-footer {
+  background-color: #FCEFEE;
+  border-top: 1px solid #FFEED0;
 }
 
 @media (min-width: 992px) {
