@@ -1,0 +1,39 @@
+/*!
+ * Start Bootstrap - Blog Home (https://startbootstrap.com/template-overviews/blog-home)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-blog-home/blob/master/LICENSE)
+ */
+
+body {
+  padding-top: 54px;
+}
+
+.bg-dark {
+  background-color: #A8D8EA !important;
+}
+
+h1 {
+  color: #838ED9;
+}
+
+h2 {
+  color: #1E56A0;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #AA96DA;
+  border-color: #AA96DA;
+}
+
+.btn-primary:hover {
+  background-color: #C582D5;
+  border-color: #C582D5;
+  color: #fff;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}
