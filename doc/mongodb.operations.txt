@@ -1,0 +1,61 @@
+user1 
+	post1
+		comment1, comment2, comment3,
+	post2
+		comment1, comment2, comment3,
+	post3
+		comment1, comment2, comment3,
+
+		
+user2 
+	post4
+		comment1, comment2, comment3,
+	post5
+		comment1, comment2, comment3,
+	post6
+		comment1, comment2, comment3,
+		
+		
+		
+		
+
+{
+    “id”: 1,
+    "list": [1,2,3]
+}
+{$addToSet:{list:4}}
+		
+		
+		
+{fn:'Xianjian', ln:'Bao', password:'123456', email:'baoxianjian@gmail.com', 
+	posts:[
+		{
+			uuid:'xxxx',title:'xxx', type:0, status:0 , key_time:123456789, location:'Student Lounge of MUM', desc:'red pen', pubat:123456789, 
+			comments:[{uuid:'xxxx',u_id:'xxxxxxxxxx',comment:'xxx', pubat:122345667}]
+		}
+	]
+}
+
+
+db.users.find({posts:{"xxx":"aaa"}},{"posts":{"$slice":[0,1]},posts:1,_id:0}) 
+
+db.users.find({posts:{"xxx":"aaa"}},{posts:1});
+
+//显示指定字段
+db.users.find({posts:{"xxx":"aaa"}},{posts:1, _id:0});
+
+//根据元素查询 且只显示该元素信息
+db.users.find({posts:{"xxx":"aaa"}},{"posts":{"$slice":[0,1]},posts:1,_id:0}) 
+
+db.users.update({"email":"baoxianjian@gmail.com"},{$set:{posts:[{xxx:'aaa'}]}});
+
+db.users.update({"email":"baoxianjian@gmail.com"},{$addToSet:{posts:[{x2:'bbb'}]}});
+db.users.update({"email":"baoxianjian@gmail.com"},{$addToSet:{posts:[{x3:'ccc'}]}});
+
+
+db.users.update({"email":"baoxianjian@gmail.com", posts},{$addToSet:{posts.comment:[{x1:'aaa'}]}});
+
+
+
+
+db.users.update({"email":"baoxianjian@gmail.com"},{$set:{posts:[{title:'xxx', type:0, status:0 , key_time:123456789, location:'Student Lounge of MUM', desc:'red pen', pubat:123456789, comments:[{u_id:'xxxxxxxxxx',comment:'xxx', pubat:122345667}]}]}});
