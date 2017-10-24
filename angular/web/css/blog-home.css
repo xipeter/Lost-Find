@@ -16,8 +16,27 @@ h1 {
   color: #838ED9;
 }
 
-h2 {
+h2, h5 {
   color: #1E56A0;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: #cce6ff;
+}
+
+.form {
+  width: 688px;
+  text-align-last: center;
+}
+
+.login-label {
+  display: inline-block;
+  margin-bottom: .5rem;
+  text-align-last: left;
+}
+
+.login-input {
+  text-align-last: left;
 }
 
 .btn-primary {
