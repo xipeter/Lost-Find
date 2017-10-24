@@ -54,3 +54,6 @@ h2 {
 .mt-4, .my-4 {
   margin-top: 4rem!important;
 }
+#card-img-top{
+  background-image: url('/img/lostandfound.jpg');
+}
