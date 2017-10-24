@@ -24,7 +24,7 @@ h2, h5 {
   color: #cce6ff;
 }
 
-.form {
+.login-form {
   width: 688px;
   text-align-last: center;
 }
@@ -37,6 +37,11 @@ h2, h5 {
 
 .login-input {
   text-align-last: left;
+}
+
+.signup-form {
+  width: 688px;
+  text-align: -webkit-center;
 }
 
 .btn-primary {
