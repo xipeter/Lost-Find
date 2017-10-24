@@ -1,0 +1,9 @@
+mongodb连接地址：
+
+
+命令行连接：
+mongo "mongodb://cluster0-shard-00-00-kkvhg.mongodb.net:27017,cluster0-shard-00-01-kkvhg.mongodb.net:27017,cluster0-shard-00-02-kkvhg.mongodb.net:27017/test?replicaSet=Cluster0-shard-0" --authenticationDatabase admin --ssl --username root --password 123456#
+
+
+程序中连接：
+mongodb://root:123456#@cluster0-shard-00-00-kkvhg.mongodb.net:27017,cluster0-shard-00-01-kkvhg.mongodb.net:27017,cluster0-shard-00-02-kkvhg.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin
