@@ -3,6 +3,7 @@ import { Component, Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Validator } from './validator';
+import { ReturnObj } from './returnobj';
 
 
 interface Credentials {
@@ -23,11 +24,14 @@ export class LoginComponent{
         password: new FormControl()
 
     });
+    ret:ReturnObj;
     credentials: Credentials;
     constructor(private auth: AuthService) { }
 
     onLogin(credentials) {
-        console.log(credentials);
-        this.auth.login(credentials);
+        
+        this.ret =  this.auth.login(credentials);
+        console.log(this.ret);
+
     }
 }

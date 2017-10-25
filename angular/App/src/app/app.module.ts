@@ -11,6 +11,7 @@ import { AuthService } from './auth.service';
 import { AuthInterceptor } from './auth.interceptor';
 import {  HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReturnObj } from './returnobj';
 
 @NgModule({
   declarations: [
@@ -20,9 +21,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
+
+
 BrowserModule,AppRouting,HttpClientModule,FormsModule,ReactiveFormsModule
   ],
-  providers: [AuthService,
+  providers: [AuthService,ReturnObj
     // {
     //   provide:HTTP_INTERCEPTORS,
     //   useClass:AuthInterceptor,
