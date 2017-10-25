@@ -19,7 +19,7 @@ export class AuthService {
                     this.returnobj.Message = 'Your username or password is invalid,Please try again';
                     // console.log("service"+this.returnobj);
                 }else{
-                    
+                    this.returnobj.code =1;
                 }
                 
             },

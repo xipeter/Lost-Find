@@ -3,7 +3,7 @@ export class User{
     firstName:string;
     lastName:string;
     username:string;
-    password:string;
+    pwd:string;
     email:string;
     post:{
         title:string;
