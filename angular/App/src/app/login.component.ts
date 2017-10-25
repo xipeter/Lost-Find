@@ -28,6 +28,6 @@ export class LoginComponent{
 
     onLogin(credentials) {
         console.log(credentials);
-        // this.auth.login(credentials);
+        this.auth.login(credentials);
     }
 }
