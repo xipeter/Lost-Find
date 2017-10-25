@@ -1,4 +1,6 @@
 import {Component} from "@angular/core";
+import { FormGroup, FormControl } from '@angular/forms';
+import {User} from "./user";
 
 @Component({
     selector:'signup',
@@ -10,4 +12,18 @@ import {Component} from "@angular/core";
 export class SignupComponent {
 
     imagePath = '/assets/img/signup.jpg';
+
+    signupForm = new FormGroup({
+
+        firstname: new FormControl(),
+        lastname: new FormControl(),
+        email: new FormControl(),
+        password: new FormControl()
+
+    });
+
+    user: User;
+
+
+
 }
