@@ -10,6 +10,7 @@ var {ObjectId} = require('mongodb');
 var userDAO = function () {
 	var counter=0;
 	const tableName = "users";
+	const commentTableName = "comments";
 	
 	
 //-----------------------user operations---------------------------------
@@ -121,29 +122,18 @@ db.users.update({"email":"baoxianjian@gmail.com"},{$addToSet:{posts:{
 
 
 //---------------------------comment operations----------------------------------
+
 	this.getAllCommentsByPostId = function(pid, callback){
-		var condition={"posts.type":type};
-	
-		if(uid)
-		{
-			if(!dbo.isValidObjectId(uid))
-			{
-				callback({});
-				return;
-			} 
-			condition._id = dbo.safeObjectId(uid);
-		}
-		
-		dbo.execute(db=>{return db.collection(tableName)
-		.aggregate(
-				[{"$unwind":"$posts"},{"$match":{"posts.type":parseInt(type)}},{"$project":{"posts":1,"_id":0}}],
-				(err, result)=>{callback(result);}
-			);
-		},null);
+		dbo.execute(db=>{return db.collection(commentTableName).find({},{p_uuid:0,}).toArray();},callback);
 	}
-
-
-
+	
+	
+	this.addComment = function(comment,callback)
+	{
+		if(!comment || !comment.p_uuid){callback({});return;}
+		dbo.execute(db=>{return db.collection(commentTableName).insertOne(comment)},callback);
+	}
+	
 	
 }
 

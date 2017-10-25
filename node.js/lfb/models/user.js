@@ -19,10 +19,10 @@ var post = function(title,pic,type,status,key_time,location,desc,pubat)
 	this.pubat = pubat;
 }
 
-var comment = function( u_id, comment, pubat)
+var comment = function(email,p_uuid, comment, pubat)
 {
-	this.uuid;
-	this.u_id = u_id;
+	this.email = email;
+	this.p_uuid = p_uuid;
 	this.comment = comment;
 	this.pubat = pubat;
 }

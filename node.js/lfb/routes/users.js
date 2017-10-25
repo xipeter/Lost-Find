@@ -89,7 +89,22 @@ router.post('/posts', function(req, res, next) {
 
 
 
+/* GET comments listing. */
+router.get('/posts/:pid/comments', function(req, res, next) {
+	const pid = req.params.pid;
+	dao.getAllCommentsByPostId(pid,a=>{ res.send(a)});
+});
 
+
+/* POST add comments. */
+router.post('/posts/:pid/comments', function(req, res, next) {	  
+	const pid = req.params.pid;
+	const body = req.body;
+	//function(u_id,p_uuid, comment, pubat)
+	
+	var comment = new model.comment(body.email,pid,body.comment,0);
+	dao.addComment(comment,a=>{res.send({status:a.result.n})});
+});
 
 
 
