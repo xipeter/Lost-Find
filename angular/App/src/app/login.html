@@ -38,7 +38,7 @@
 
             <!-- Blog Post -->
             <div class="card mb-4">
-                <div id="card-img-top"  alt="Card image cap"></div>
+                <img [src]='imagePath' class="card-img-top" alt="Card image cap">
                 <div class="card-body">
                     <!--<h2 class="card-title">Post Title</h2>-->
                     <form [formGroup] = "signinForm" #f="ngForm"  class="form"  (ngSubmit)=onLogin(f.value) >
