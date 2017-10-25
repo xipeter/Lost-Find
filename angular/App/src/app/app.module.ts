@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home.component';
 import { AppRouting } from './app.routing.module';
 import { LoginComponent } from './login.component';
+import { SignupComponent} from "./signup.component";
 import { AuthService } from './auth.service';
 import { AuthInterceptor } from './auth.interceptor';
 import {  HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -13,7 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    AppComponent,HomeComponent,LoginComponent
+    AppComponent,HomeComponent,LoginComponent,SignupComponent
   ],
   imports: [
 
