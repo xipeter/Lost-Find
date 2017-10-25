@@ -11,8 +11,6 @@ router.get('/', function(req, res, next) {
 });
 
 
-
-
 /* POST check user. */
 router.post('/check', function(req, res, next) {
 	var body = req.body;
@@ -26,13 +24,36 @@ router.post('/check', function(req, res, next) {
 });
 
 
-
 /* GET users' posts. */
 router.get('/:uid/posts/:type', function(req, res, next) {
 	const uid = req.params.uid;
 	const type = req.params.type;
-	dao.getAllPosts(type,uid,a=>{console.log(a);res.send(a)}); //mongo db
+	dao.getAllPostsByUId(type,uid,a=>{console.log(a);res.send(a)}); //mongo db
 });
+
+
+/* GET posts by type */
+router.get('/posts/:type', function(req, res, next) {
+	const type = req.params.type;
+	dao.getAllPosts(type,a=>{console.log(a);res.send(a)}); //mongo db
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* POST user. */

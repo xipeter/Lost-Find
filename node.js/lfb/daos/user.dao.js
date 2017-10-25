@@ -19,7 +19,7 @@ var userDAO = function () {
 		dbo.execute(db=>{return db.collection(tableName).findOne({email:email,password:pwd});},callback);
     }
 	
-	this.getAllPosts = function(type,uid, callback){
+	this.getAllPostsByUId = function(type,uid, callback){
 		var condition={"posts.type":type};
 	
 		if(uid)
@@ -32,24 +32,23 @@ var userDAO = function () {
 			condition._id = dbo.safeObjectId(uid);
 		}
 		
-		console.log(condition);
-
 		dbo.execute(db=>{return db.collection(tableName)
 		.aggregate(
 				[{"$unwind":"$posts"},{"$match":{"posts.type":parseInt(type)}},{"$project":{"posts":1,"_id":0}}],
 				(err, result)=>{callback(result);}
 			);
 		},null);
-		
-		
-		
-		
-		//dbo.execute(db=>{return db.collection(tableName).findOne({"posts.type":0});},callback);
-		
-		
 	}
 	
-	
+	this.getAllPosts = function(type, callback){
+		var condition={"posts.type":type};
+		dbo.execute(db=>{return db.collection(tableName)
+		.aggregate(
+				[{"$unwind":"$posts"},{"$match":{"posts.type":parseInt(type)}}],
+				(err, result)=>{callback(result);}
+			);
+		},null);
+	}
 	
 	
 	
