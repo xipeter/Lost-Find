@@ -12,4 +12,13 @@ export class Validator {
         }
     }
 
+    static checkName(control: AbstractControl) :ValidationErrors | null {
+        if (!(control.value as string).match(/^[a-zA-Z]+$/) ) {
+            return {notAlphabet: true}
+        }
+
+        return null;
+    }
+
+
 }
