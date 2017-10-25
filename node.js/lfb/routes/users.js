@@ -1,9 +1,9 @@
 const express = require('express');
 var router = express.Router();
-var userDAO = require('../daos/user.dao');
+
+var userDAO=require('../daos/user.dao');
 var dao = new userDAO();
 //var userDAO = new userApi.userDAO;
-
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {	
@@ -11,32 +11,48 @@ router.get('/', function(req, res, next) {
 });
 
 
-/* GET user one. */
-router.get('/:id', function(req, res, next) {
-	var id = req.params.id;
-	
-	dao.getUser(id,a=>{res.send(a)}); //mongo db
-	
-	//var user = dao.getUser(id);
-	//res.send(user);
-});
-
-
-/* POST user one. */
+/* POST check user. */
 router.post('/check', function(req, res, next) {
 	var body = req.body;
 	
 	dao.getUserByEmailAndPwd(body.email,body.pwd,a=>{
-		//res.send(a);
 		if(a) 
 			res.send({status:1});
 		else 
 			res.send({status:0});
 		}); //mongo db
-	
-	//var user = dao.getUser(id);
-	//res.send(user);
 });
+
+
+/* GET users' posts. */
+router.get('/:uid/posts/:type', function(req, res, next) {
+	const uid = req.params.uid;
+	const type = req.params.type;
+	dao.getAllPostsByUId(type,uid,a=>{console.log(a);res.send(a)}); //mongo db
+});
+
+
+/* GET posts by type */
+router.get('/posts/:type', function(req, res, next) {
+	const type = req.params.type;
+	dao.getAllPosts(type,a=>{console.log(a);res.send(a)}); //mongo db
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -44,6 +60,9 @@ router.post('/check', function(req, res, next) {
 router.post('/', function(req, res, next) {	  
 	var body = req.body;
 	var user = dao.newUser(body.name, body.author, body.isbn);
+	
+	
+	
 	
 	dao.addUser(user,a=>{res.send(a)});
 	

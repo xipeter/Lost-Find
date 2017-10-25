@@ -23,11 +23,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 BrowserModule,AppRouting,HttpClientModule,FormsModule,ReactiveFormsModule
   ],
   providers: [AuthService,
-    {
-      provide:HTTP_INTERCEPTORS,
-      useClass:AuthInterceptor,
-      multi:true
-    }
+    // {
+    //   provide:HTTP_INTERCEPTORS,
+    //   useClass:AuthInterceptor,
+    //   multi:true
+    // }
   
   
   ],
