@@ -19,6 +19,19 @@ var userDAO = function () {
 		dbo.execute(db=>{return db.collection(tableName).findOne({email:email,password:pwd});},callback);
     }
 	
+	this.getUserByEmail =function(email, callback){
+		dbo.execute(db=>{return db.collection(tableName).findOne({email:email});},callback);
+	}
+	
+	this.addUser = function(user,callback)
+	{
+		if(!user){callback({});return;}
+		dbo.execute(db=>{return db.collection(tableName).insertOne(user)},callback);
+	}
+	
+	
+	
+	
 	this.getAllPostsByUId = function(type,uid, callback){
 		var condition={"posts.type":type};
 	
@@ -48,6 +61,12 @@ var userDAO = function () {
 				(err, result)=>{callback(result);}
 			);
 		},null);
+	}
+	
+	this.getPost = function(id, callback)
+	{
+		if(!id) {callback({});return;}
+		dbo.execute(db=>{return db.collection(tableName).findOne({uuid:id})},callback);
 	}
 	
 	
