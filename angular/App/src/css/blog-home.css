@@ -39,6 +39,10 @@ a#home, a#signUp, a#signIn {
   color: #fff;
 }
 
+a#home-hover:hover, a#signIn-hover:hover, a#signUp-hover:hover, a#signOut-hover:hover {
+  color: #E3EFF3;
+}
+
 .login-form {
   width: 688px;
   text-align-last: center;
