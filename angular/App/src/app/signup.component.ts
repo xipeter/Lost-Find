@@ -1,8 +1,10 @@
 import {Component} from "@angular/core";
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {User} from "./user";
 import {UserService} from "./user.service";
 import {Router} from "@angular/router";
+import {ReturnObj} from "./returnobj";
+import {Validator} from "./validator";
 
 @Component({
     selector:'signup',
@@ -17,15 +19,16 @@ export class SignupComponent {
 
     model: any = {};
     loading = false;
+    ret:ReturnObj;
 
     constructor(
         private user: User,
-        private router: Router,
-        private userService: UserService) { }
+        private userService: UserService
+    ) { }
 
     signupForm = new FormGroup({
 
-        firstname: new FormControl(),
+        firstname: new FormControl('', [Validators.required, Validator.checkName]),
         lastname: new FormControl(),
         email: new FormControl(),
         password: new FormControl()
@@ -41,16 +44,10 @@ export class SignupComponent {
         this.user.password = form.password;
 
         this.loading = true;
-        this.userService.create(this.user)
-            .subscribe(
-                data => {
-                    // this.alertService.success('Registration successful', true);
-                    this.router.navigate(['/login']);
-                },
-                error => {
-                    // this.alertService.error(error);
-                    this.loading = false;
-                });
+
+        this.ret = this.userService.create(this.user);
+        console.log(this.ret);
+
     }
 
 
