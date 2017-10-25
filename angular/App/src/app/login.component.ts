@@ -21,6 +21,8 @@ interface Credentials {
 
 @Injectable()
 export class LoginComponent{
+
+    imagePath = '/assets/img/lostandfound.jpg';
     signinForm = new FormGroup({
         email : new FormControl('1'),
         pwd: new FormControl()

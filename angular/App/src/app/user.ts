@@ -1,7 +1,7 @@
 export class User{
     id:number;
-    firstName:string;
-    lastName:string;
+    fn:string;
+    ln:string;
     username:string;
     pwd:string;
     email:string;
