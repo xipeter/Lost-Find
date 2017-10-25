@@ -61,7 +61,7 @@ router.get('/:uid/posts/:type', function(req, res, next) {
 
 
 /* GET posts by type */
-router.get('/posts/:type', function(req, res, next) {
+router.get('/posts/type/:type', function(req, res, next) {
 	const type = req.params.type;
 	dao.getAllPosts(type,a=>{res.send(a)}); //mongo db
 });
