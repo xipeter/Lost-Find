@@ -1,14 +1,26 @@
 const express = require('express');
 var router = express.Router();
 
+const model = require('../models/user');
+
 var userDAO=require('../daos/user.dao');
 var dao = new userDAO();
-//var userDAO = new userApi.userDAO;
+
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {	
-	dao.getUsers(a=>{res.send(a)}); //mongo db
+router.get('/', function(req, res, next) {
+	dao.getUsers(a=>{res.send(a)});
 });
+
+
+/* GET user by email */
+router.get('/:email', function(req, res, next) {
+	const email = req.params.email;
+	dao.getUserByEmail(email,a=>{res.send(a)}); 
+});
+
+
+
 
 
 /* POST check user. */
@@ -24,51 +36,63 @@ router.post('/check', function(req, res, next) {
 });
 
 
+/* POST add user. */
+router.post('/', function(req, res, next) {	  
+	var body = req.body;
+	//function(uuid,title,pic,type,status,key_time,location,desc,pubat)
+	//function (fn,ln,pwd,email)
+	var user = new model.user(body.fn, body.ln, body.pwd, body.email);
+	dao.getUserByEmail(body.email,a=>{
+		if(a){res.send({status:0}); return;}
+		dao.addUser(user,a=>{res.send({status:a.result.n})});
+	});
+});
+
+
+
+
+
 /* GET users' posts. */
 router.get('/:uid/posts/:type', function(req, res, next) {
 	const uid = req.params.uid;
 	const type = req.params.type;
-	dao.getAllPostsByUId(type,uid,a=>{console.log(a);res.send(a)}); //mongo db
+	dao.getAllPostsByUId(type,uid,a=>{res.send(a)}); //mongo db
 });
 
 
 /* GET posts by type */
-router.get('/posts/:type', function(req, res, next) {
+router.get('/posts/type/:type', function(req, res, next) {
 	const type = req.params.type;
-	dao.getAllPosts(type,a=>{console.log(a);res.send(a)}); //mongo db
+	dao.getAllPosts(type,a=>{res.send(a)}); //mongo db
 });
 
 
+/* GET post by uuid */
+router.get('/posts/:id', function(req, res, next) {
+	const id = req.params.id;
+	dao.getPost(id,a=>{res.send(a)}); //mongo db
+});
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* POST user. */
-router.post('/', function(req, res, next) {	  
+/* POST add post. */
+router.post('/posts', function(req, res, next) {	  
 	var body = req.body;
-	var user = dao.newUser(body.name, body.author, body.isbn);
+	//function(uuid,title,pic,type,status,key_time,location,desc,pubat)
+	//function (fn,ln,pwd,email)
+	//var user = new model.post(body.fn, body.ln, body.pwd, body.email);
 	
+	//function(title,pic,type,status,key_time,location,desc,pubat)
+	var post = new model.post(body.title,'',body.type,0, body.key_time, body.location, body.desc,0);
 	
-	
-	
-	dao.addUser(user,a=>{res.send(a)});
-	
-	//dao.addUser(user);
-	//res.send(user);
+	dao.addPost(body.email,post,a=>{res.send({status:a.result.n})});
 });
+
+
+
+
+
+
+
 
 
 /* PUT user. */

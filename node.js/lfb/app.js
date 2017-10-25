@@ -50,10 +50,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-<<<<<<< HEAD
-app.listen(3100);
-=======
-app.listen(9000);
->>>>>>> 1f2fe05931f986b6d2f7577df4f162564caa5f24
+
+app.listen(3000);
 
 module.exports = app;

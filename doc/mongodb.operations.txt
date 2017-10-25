@@ -83,7 +83,15 @@ db.users.update({"email":"baoxianjian@gmail.com", posts},{$addToSet:{posts.comme
 
 
 
+//增加帖子
+db.users.update({"email":"baoxianjian@gmail.com"},{$addToSet:{posts:{
+			title:'xxx0', type:0, status:0 , key_time:123456789, location:'Student Lounge of MUM', desc:'red pen', pubat:123456789, 
+			comments:[{u_id:'xxxxxxxxxx',comment:'xxx', pubat:122345667}]
+		}
+	}
+});
 
+//增加评论
 db.users.update({"email":"baoxianjian@gmail.com"},{$addToSet:{posts:{
 			title:'xxx0', type:0, status:0 , key_time:123456789, location:'Student Lounge of MUM', desc:'red pen', pubat:123456789, 
 			comments:[{u_id:'xxxxxxxxxx',comment:'xxx', pubat:122345667}]
