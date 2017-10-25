@@ -42,7 +42,7 @@
                 <img [src]='imagePath' class="card-img-top" alt="Card image cap">
                 <div class="card-body">
                     <!--<h2 class="card-title">Post Title</h2>-->
-                    <form [formGroup]="signupForm" #f="ngForm" class="signup-form" (ngSubmit)=onSignup(f.value)>
+                    <form [formGroup]="signupForm" #f="ngForm" class="signup-form" (ngSubmit)= register(form)>
                         <br>
                         <input ngModel formControlName="firstname" class="signup-input" type="text" name="first_name" id="first_name"
                                style="width: 240px; margin-bottom: 5px;" placeholder=" First Name">
