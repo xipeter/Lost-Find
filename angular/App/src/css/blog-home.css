@@ -18,10 +18,21 @@ h1 {
 
 h2, h5 {
   color: #1E56A0;
+  margin-top: 0px;
+  padding: 12px 12px 12px 12px;
 }
 
 .navbar-dark .navbar-nav .nav-link {
   color: #5ec5eb;
+}
+
+#navbarResponsive {
+  display: flex!important;
+  flex: auto;
+}
+
+a.nav-link {
+  font-size: initial;
 }
 
 .login-form {
