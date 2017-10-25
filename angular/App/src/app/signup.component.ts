@@ -1,5 +1,5 @@
-import {Component} from "@angular/core";
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {Component, Injectable} from "@angular/core";
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import {User} from "./user";
 import {UserService} from "./user.service";
 import {Router} from "@angular/router";
@@ -13,6 +13,7 @@ import {Validator} from "./validator";
 
 })
 
+@Injectable()
 export class SignupComponent {
 
     imagePath = '/assets/img/signup.jpg';
@@ -24,16 +25,32 @@ export class SignupComponent {
     constructor(
         private user: User,
         private userService: UserService
-    ) { }
+
+    ) {};
 
     signupForm = new FormGroup({
 
-        firstname: new FormControl('', [Validators.required, Validator.checkName]),
-        lastname: new FormControl(),
-        email: new FormControl(),
-        password: new FormControl()
+        firstName: new FormControl('', [Validators.required, Validator.checkName]),
+        lastName: new FormControl('', [Validators.required, Validator.checkName]),
+        email: new FormControl('', [Validators.required, Validator.check]),
+        confirmEmail: new FormControl('', Validators.required),
+        password: new FormControl('', [Validators.required, Validator.checkPassword]),
+        confirmPassword: new FormControl()
 
     });
+
+    // constructor(
+    //     fb: FormBuilder,
+    //     private user: User,
+    //     private userService: UserService
+    //
+    // ) {
+    //     this.signupForm = fb.group({
+    //         // define your control in you form
+    //         email: [''],
+    //         confirmEmail: ['']
+    //     })
+    // };
 
 
     register(form) {

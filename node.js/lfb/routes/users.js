@@ -42,7 +42,10 @@ router.post('/', function(req, res, next) {
 	//function(uuid,title,pic,type,status,key_time,location,desc,pubat)
 	//function (fn,ln,pwd,email)
 	var user = new model.user(body.fn, body.ln, body.pwd, body.email);
-	dao.addUser(user,a=>{res.send(a)});
+	dao.getUserByEmail(body.email,a=>{
+		if(a){res.send({status:0}); return;}
+		dao.addUser(user,a=>{res.send({status:a.result.n})});
+	});
 });
 
 
@@ -53,21 +56,21 @@ router.post('/', function(req, res, next) {
 router.get('/:uid/posts/:type', function(req, res, next) {
 	const uid = req.params.uid;
 	const type = req.params.type;
-	dao.getAllPostsByUId(type,uid,a=>{console.log(a);res.send(a)}); //mongo db
+	dao.getAllPostsByUId(type,uid,a=>{res.send(a)}); //mongo db
 });
 
 
 /* GET posts by type */
-router.get('/posts/:type', function(req, res, next) {
+router.get('/posts/type/:type', function(req, res, next) {
 	const type = req.params.type;
-	dao.getAllPosts(type,a=>{console.log(a);res.send(a)}); //mongo db
+	dao.getAllPosts(type,a=>{res.send(a)}); //mongo db
 });
 
 
 /* GET post by uuid */
 router.get('/posts/:id', function(req, res, next) {
 	const id = req.params.id;
-	dao.getPost(id,a=>{console.log(a);res.send(a)}); //mongo db
+	dao.getPost(id,a=>{res.send(a)}); //mongo db
 });
 
 
@@ -81,7 +84,7 @@ router.post('/posts', function(req, res, next) {
 	//function(title,pic,type,status,key_time,location,desc,pubat)
 	var post = new model.post(body.title,'',body.type,0, body.key_time, body.location, body.desc,0);
 	
-	dao.addPost(body.email,post,a=>{res.send(a)});
+	dao.addPost(body.email,post,a=>{res.send({status:a.result.n})});
 });
 
 

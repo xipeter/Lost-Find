@@ -47,6 +47,7 @@ var userDAO = function () {
 //-----------------------post operations---------------------------------
 
 	this.getAllPostsByUId = function(type,uid, callback){
+		type=parseInt(type);
 		var condition={"posts.type":type};
 	
 		if(uid)
@@ -68,6 +69,7 @@ var userDAO = function () {
 	}
 	
 	this.getAllPosts = function(type, callback){
+		type=parseInt(type);
 		var condition={"posts.type":type};
 		dbo.execute(db=>{return db.collection(tableName)
 		.aggregate(
@@ -80,7 +82,15 @@ var userDAO = function () {
 	this.getPost = function(id, callback)
 	{
 		if(!id) {callback({});return;}
-		dbo.execute(db=>{return db.collection(tableName).findOne({uuid:id})},callback);
+		dbo.execute(db=>{return db.collection(tableName)
+		.aggregate(
+				[{"$unwind":"$posts"},{"$match":{"posts.uuid":id}},{"$project":{"posts":1,"_id":0}}],
+				(err, result)=>{
+					if(result && result.length>0){callback(result[0].posts);return;}
+					callback({});
+				}
+			);
+		},null);
 	}
 	
 	
@@ -94,15 +104,46 @@ db.users.update({"email":"baoxianjian@gmail.com"},{$addToSet:{posts:{
 	}
 });
 */		post.uuid = dbo.getUUID();
-		
-		dbo.execute(db=>{return db.collection(tableName).findOneAndUpdate({email:email},{$addToSet:{posts:post}});},callback);
-		
-
-	
+		post.type = parseInt(post.type);
+		dbo.execute(db=>{return db.collection(tableName).update({email:email},{$addToSet:{posts:post}});},callback);
 	}
 	
 	
 	
+
+
+
+
+
+
+
+
+
+
+//---------------------------comment operations----------------------------------
+	this.getAllCommentsByPostId = function(pid, callback){
+		var condition={"posts.type":type};
+	
+		if(uid)
+		{
+			if(!dbo.isValidObjectId(uid))
+			{
+				callback({});
+				return;
+			} 
+			condition._id = dbo.safeObjectId(uid);
+		}
+		
+		dbo.execute(db=>{return db.collection(tableName)
+		.aggregate(
+				[{"$unwind":"$posts"},{"$match":{"posts.type":parseInt(type)}},{"$project":{"posts":1,"_id":0}}],
+				(err, result)=>{callback(result);}
+			);
+		},null);
+	}
+
+
+
 	
 }
 
