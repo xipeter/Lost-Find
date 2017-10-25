@@ -18,6 +18,16 @@ user2
 		
 		
 		
+		
+		
+		
+		
+db.mycollection.find({"IMAGE URL":{$ne:null}});
+		
+		
+		
+		
+		
 
 {
     “id”: 1,
@@ -37,6 +47,8 @@ user2
 }
 
 
+db.users.insert({fn:'Xianjian', ln:'Bao', password:'123456', email:'baoxianjian@gmail.com'});
+
 db.users.find({posts:{"xxx":"aaa"}},{"posts":{"$slice":[0,1]},posts:1,_id:0}) 
 
 db.users.find({posts:{"xxx":"aaa"}},{posts:1});
@@ -46,6 +58,20 @@ db.users.find({posts:{"xxx":"aaa"}},{posts:1, _id:0});
 
 //根据元素查询 且只显示该元素信息
 db.users.find({posts:{"xxx":"aaa"}},{"posts":{"$slice":[0,1]},posts:1,_id:0}) 
+
+//查询lost
+db.users.find({posts:{$match:{"type":0}}},{posts:1}).pretty();
+
+db.users.find({"posts.type":0},{"posts":{"$slice":[0,1]},posts:1,_id:0}).pretty();
+
+
+//ok
+db.users.aggregate({"$unwind":"$posts"},{"$match":{"posts.type":0}})
+
+//ok 指定字段
+db.users.aggregate({"$unwind":"$posts"},{"$match":{"posts.type":0}},{$project:{"posts":1,"_id":0}});
+
+
 
 db.users.update({"email":"baoxianjian@gmail.com"},{$set:{posts:[{xxx:'aaa'}]}});
 
@@ -58,4 +84,9 @@ db.users.update({"email":"baoxianjian@gmail.com", posts},{$addToSet:{posts.comme
 
 
 
-db.users.update({"email":"baoxianjian@gmail.com"},{$set:{posts:[{title:'xxx', type:0, status:0 , key_time:123456789, location:'Student Lounge of MUM', desc:'red pen', pubat:123456789, comments:[{u_id:'xxxxxxxxxx',comment:'xxx', pubat:122345667}]}]}});
+db.users.update({"email":"baoxianjian@gmail.com"},{$addToSet:{posts:{
+			title:'xxx0', type:0, status:0 , key_time:123456789, location:'Student Lounge of MUM', desc:'red pen', pubat:123456789, 
+			comments:[{u_id:'xxxxxxxxxx',comment:'xxx', pubat:122345667}]
+		}
+	}
+});
