@@ -21,7 +21,7 @@ h2, h5 {
 }
 
 .navbar-dark .navbar-nav .nav-link {
-  color: #cce6ff;
+  color: #5ec5eb;
 }
 
 .login-form {
@@ -74,4 +74,72 @@ h2, h5 {
   body {
     padding-top: 56px;
   }
+}
+
+@import url(//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css);
+
+.detailBox {
+  width:690px;
+  border:1px solid #bbb;
+}
+.titleBox {
+  width: 688px;
+  background-color:#fdfdfd;
+  padding:10px;
+}
+.titleBox label{
+  color:#444;
+  margin:0;
+  display:inline-block;
+}
+
+label.detail-label {
+  color: #00aceb;
+}
+
+.commentBox {
+  padding:10px;
+  border-top:1px dotted #bbb;
+}
+
+#comment-input {
+  width: 90%;
+}
+
+#add-comment {
+  width: 100%;
+}
+
+.commentList {
+  padding:0;
+  list-style:none;
+  max-height:200px;
+  overflow:auto;
+}
+.commentList li {
+  margin:0;
+  margin-top:10px;
+}
+.commentList li > div {
+  display:table-cell;
+}
+.commenter {
+  width:100px;
+  margin-right:5px;
+  height:100%;
+  float:left;
+  color: #00aceb;
+}
+
+.commentText p {
+  margin:0;
+}
+.sub-text {
+  color:#aaa;
+  font-family:verdana;
+  font-size:11px;
+}
+.actionBox {
+  border-top:1px dotted #bbb;
+  padding:10px;
 }

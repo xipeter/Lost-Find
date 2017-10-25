@@ -1,0 +1,78 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">Lost & Found Board</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="row">
+
+        <!-- Blog Entries Column -->
+        <div class="col-md-8">
+
+            <h1 class="my-4">Hi guest, please login.
+                <!--<small>Secondary Text</small>-->
+            </h1>
+
+            <!-- Blog Post -->
+            <div class="card mb-4">
+                <div id="card-img-top"  alt="Card image cap"></div>
+                <div class="card-body">
+                    <!--<h2 class="card-title">Post Title</h2>-->
+                    <form [formGroup] = "signinForm" #f="ngForm"  class="form"  (ngSubmit)=onLogin(f.value) >
+                        <br>
+                        <label class="login-label" for="login_id" style="width: 100px">Login ID</label>
+                        <input class="login-input" ngModel formControlName="username" type="email" name="username" id="login_id" style="width: 240px" placeholder=" example@domain.com">
+                        <br>
+                        <label class="login-label" for="login_password" style="width: 100px">Password</label>
+                        <input class="login-input" ngModel formControlName = "password" type="password" name="password" id="login_password" style="width: 240px" placeholder=" 6 characters">
+                        <br>
+                        <br>
+                        <button class="btn btn-primary" style="width: 348px">Login</button>
+                    </form>
+
+
+                    <!--<a href="#" class="btn btn-primary" style="width: 120px">Login</a>-->
+                </div>
+
+                <div *ngIf="
+                signinForm.get('username').touched&&
+                signinForm.get('username').errors&&
+                signinForm.get('username').errors.mum" class="alert alert-danger">
+                        you must input the email address from MUM.
+                </div>
+
+                <div class="card-footer text-muted">
+                    Not a member yet?
+                    <a href="#"> Sign up here.</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- /.row -->
+
+</div>
