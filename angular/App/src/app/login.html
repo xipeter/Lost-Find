@@ -44,10 +44,10 @@
                     <form [formGroup] = "signinForm" #f="ngForm"  class="form"  (ngSubmit)=onLogin(f.value) >
                         <br>
                         <label class="login-label" for="login_id" style="width: 100px">Login ID</label>
-                        <input class="login-input" ngModel formControlName="username" type="email" name="username" id="login_id" style="width: 240px" placeholder=" example@domain.com">
+                        <input class="login-input" ngModel formControlName="email" type="email" name="username" id="login_id" style="width: 240px" placeholder=" example@domain.com">
                         <br>
                         <label class="login-label" for="login_password" style="width: 100px">Password</label>
-                        <input class="login-input" ngModel formControlName = "password" type="password" name="password" id="login_password" style="width: 240px" placeholder=" 6 characters">
+                        <input class="login-input" ngModel formControlName = "pwd" type="password" name="password" id="login_password" style="width: 240px" placeholder=" 6 characters">
                         <br>
                         <br>
                         <button class="btn btn-primary" style="width: 348px">Login</button>
@@ -58,9 +58,9 @@
                 </div>
 
                 <div *ngIf="
-                signinForm.get('username').touched&&
-                signinForm.get('username').errors&&
-                signinForm.get('username').errors.mum" class="alert alert-danger">
+                signinForm.get('email').touched&&
+                signinForm.get('email').errors&&
+                signinForm.get('email').errors.mum" class="alert alert-danger">
                         you must input the email address from MUM.
                 </div>
                 <div class="alert alert-danger" *ngIf="ret" >
