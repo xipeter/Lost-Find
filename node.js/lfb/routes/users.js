@@ -44,7 +44,7 @@ router.post('/', function(req, res, next) {
 	var user = new model.user(body.fn, body.ln, body.pwd, body.email);
 	dao.getUserByEmail(body.email,a=>{
 		if(a){res.send({status:0}); return;}
-		dao.addUser(user,a=>{res.send({status:1})});
+		dao.addUser(user,a=>{res.send({status:a.result.n})});
 	});
 });
 
@@ -84,7 +84,7 @@ router.post('/posts', function(req, res, next) {
 	//function(title,pic,type,status,key_time,location,desc,pubat)
 	var post = new model.post(body.title,'',body.type,0, body.key_time, body.location, body.desc,0);
 	
-	dao.addPost(body.email,post,a=>{res.send(a)});
+	dao.addPost(body.email,post,a=>{res.send({status:a.result.n})});
 });
 
 
