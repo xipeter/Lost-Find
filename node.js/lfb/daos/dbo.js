@@ -34,6 +34,6 @@ module.exports.isValidObjectId = (s) => ObjectId.isValid(s);
 
 module.exports.safeObjectId = (s) => ObjectId.isValid(s) ? new ObjectId(s) : null;
 
-module.exports.getUUID = uuidv1();
+module.exports.getUUID = () => uuidv1();
 
 //doCrud().then(() => { console.log("CRUD test completed.") });

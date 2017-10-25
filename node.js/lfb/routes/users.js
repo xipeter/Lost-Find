@@ -71,6 +71,19 @@ router.get('/posts/:id', function(req, res, next) {
 });
 
 
+/* POST add post. */
+router.post('/posts', function(req, res, next) {	  
+	var body = req.body;
+	//function(uuid,title,pic,type,status,key_time,location,desc,pubat)
+	//function (fn,ln,pwd,email)
+	//var user = new model.post(body.fn, body.ln, body.pwd, body.email);
+	
+	//function(title,pic,type,status,key_time,location,desc,pubat)
+	var post = new model.post(body.title,'',body.type,0, body.key_time, body.location, body.desc,0);
+	
+	dao.addPost(body.email,post,a=>{res.send(a)});
+});
+
 
 
 

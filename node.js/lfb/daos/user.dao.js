@@ -11,16 +11,19 @@ var userDAO = function () {
 	var counter=0;
 	const tableName = "users";
 	
+	
+//-----------------------user operations---------------------------------
+	
     this.getUsers =  async function (callback) {
 		dbo.execute(db=>{return db.collection(tableName).find({}).toArray();},callback);
     }
 
 	this.getUserByEmailAndPwd = function (email,pwd,callback) {
-		dbo.execute(db=>{return db.collection(tableName).findOne({email:email,password:pwd});},callback);
+		dbo.execute(db=>{return db.collection(tableName).findOne({email:email,password:pwd},{posts:0});},callback);
     }
 	
 	this.getUserByEmail =function(email, callback){
-		dbo.execute(db=>{return db.collection(tableName).findOne({email:email});},callback);
+		dbo.execute(db=>{return db.collection(tableName).findOne({email:email},{posts:0});},callback);
 	}
 	
 	this.addUser = function(user,callback)
@@ -29,9 +32,20 @@ var userDAO = function () {
 		dbo.execute(db=>{return db.collection(tableName).insertOne(user)},callback);
 	}
 	
+
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+//-----------------------post operations---------------------------------
+
 	this.getAllPostsByUId = function(type,uid, callback){
 		var condition={"posts.type":type};
 	
@@ -68,6 +82,25 @@ var userDAO = function () {
 		if(!id) {callback({});return;}
 		dbo.execute(db=>{return db.collection(tableName).findOne({uuid:id})},callback);
 	}
+	
+	
+	this.addPost = function(email, post, callback)
+	{
+/*
+db.users.update({"email":"baoxianjian@gmail.com"},{$addToSet:{posts:{
+			title:'xxx0', type:0, status:0 , key_time:123456789, location:'Student Lounge of MUM', desc:'red pen', pubat:123456789, 
+			comments:[{u_id:'xxxxxxxxxx',comment:'xxx', pubat:122345667}]
+		}
+	}
+});
+*/		post.uuid = dbo.getUUID();
+		
+		dbo.execute(db=>{return db.collection(tableName).findOneAndUpdate({email:email},{$addToSet:{posts:post}});},callback);
+		
+
+	
+	}
+	
 	
 	
 	
