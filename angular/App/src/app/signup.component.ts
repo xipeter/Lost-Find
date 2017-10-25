@@ -41,7 +41,7 @@ export class SignupComponent {
         this.user.firstName = form.firstName;
         this.user.lastName = form.lastName;
         this.user.email = form.email;
-        this.user.password = form.password;
+        this.user.pwd = form.password;
 
         this.loading = true;
 
