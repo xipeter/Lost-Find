@@ -42,13 +42,19 @@
                 <img [src]='imagePath' class="card-img-top" alt="Card image cap">
                 <div class="card-body">
                     <!--<h2 class="card-title">Post Title</h2>-->
-                    <form class="signup-form">
+                    <form [formGroup]="signupForm" #f="ngForm" class="signup-form" (ngSubmit)= register(f)>
                         <br>
-                        <input class="signup-input" type="text" name="first_name" id="first_name"
+                        <input ngModel formControlName="firstname" class="signup-input" type="text" name="first_name" id="first_name"
                                style="width: 240px; margin-bottom: 5px;" placeholder=" First Name">
-                        <input class="signup-input" type="text" name="last_name" id="last_name" style="width: 240px" placeholder=" Last Name">
+                        <div class="alert-danger" *ngIf="formControlName.touched && !formControlName.valid">
+                            <div *ngIf="productName.errors.required">Product name is required</div>
+                            <div *ngIf="productName.errors.minlength">Product name should be minimum 5 characters.</div>
+                            <div *ngIf="productName.errors.maxlength">Product name should be maximum 20 characters. </div>
+                            <div *ngIf="productName.errors.pattern">Product name does not match the pattern.</div>
+                        </div>
+                        <input ngModel formControlName="lastname" class="signup-input" type="text" name="last_name" id="last_name" style="width: 240px" placeholder=" Last Name">
                         <br>
-                        <input class="signup-input" type="email" name="email" id="email"
+                        <input ngModel formControlName="email" class="signup-input" type="email" name="email" id="email"
                                style="width: 240px; margin-bottom: 5px;" placeholder=" Email">
                         <input class="signup-input" type="email" name="reenter_email" id="reenter_email" style="width: 240px" placeholder=" Re-enter Email">
                         <br>

@@ -3,11 +3,13 @@ import { Component, Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Validator } from './validator';
+import { ReturnObj } from './returnobj';
+import { Router } from '@angular/router';
 
 
 interface Credentials {
-    username:string,
-    password:string
+    email:string,
+    pwd:string
 }
 
 @Component({
@@ -19,15 +21,21 @@ interface Credentials {
 @Injectable()
 export class LoginComponent{
     signinForm = new FormGroup({
-        username : new FormControl('1',Validator.check),
-        password: new FormControl()
+        email : new FormControl('1',Validator.check),
+        pwd: new FormControl()
 
     });
+    ret:ReturnObj;
     credentials: Credentials;
-    constructor(private auth: AuthService) { }
+    constructor(private auth: AuthService, private route:Router) { }
 
     onLogin(credentials) {
-        console.log(credentials);
-        // this.auth.login(credentials);
+        
+        this.ret =  this.auth.login(credentials);
+        if(this.ret.code==1){
+            this.route.navigateByUrl("home");
+        }
+        console.log(this.ret);
+
     }
 }
