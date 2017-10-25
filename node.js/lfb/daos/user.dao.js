@@ -47,6 +47,7 @@ var userDAO = function () {
 //-----------------------post operations---------------------------------
 
 	this.getAllPostsByUId = function(type,uid, callback){
+		type=parseInt(type);
 		var condition={"posts.type":type};
 	
 		if(uid)
@@ -68,6 +69,7 @@ var userDAO = function () {
 	}
 	
 	this.getAllPosts = function(type, callback){
+		type=parseInt(type);
 		var condition={"posts.type":type};
 		dbo.execute(db=>{return db.collection(tableName)
 		.aggregate(
@@ -94,8 +96,8 @@ db.users.update({"email":"baoxianjian@gmail.com"},{$addToSet:{posts:{
 	}
 });
 */		post.uuid = dbo.getUUID();
-		
-		dbo.execute(db=>{return db.collection(tableName).findOneAndUpdate({email:email},{$addToSet:{posts:post}});},callback);
+		post.type = parseInt(post.type);
+		dbo.execute(db=>{return db.collection(tableName).update({email:email},{$addToSet:{posts:post}});},callback);
 		
 
 	
