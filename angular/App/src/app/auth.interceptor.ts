@@ -8,7 +8,7 @@ export class AuthInterceptor implements HttpInterceptor {
         // note you need to preceed your token with sring 'Bearer ', its' part of JWT protocol
         // otherwise sever won't be able to decode it even if you are passing a correct token
         const authReq = req.clone({setHeaders: {Authorization: 'Bearer '+localStorage.getItem('token')}});
-        console.log("hello");
+        console.log("hellointerceptor");
         return next.handle(authReq);
     }
 }

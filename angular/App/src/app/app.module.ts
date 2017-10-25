@@ -14,10 +14,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ReturnObj } from './returnobj';
 import {User} from "./user";
 import {UserService} from "./user.service";
+import { DetailCompenent } from './detail.component';
 
 @NgModule({
   declarations: [
-    AppComponent,HomeComponent,LoginComponent,SignupComponent
+    AppComponent,HomeComponent,LoginComponent,SignupComponent,DetailCompenent
   ],
   imports: [
 
@@ -25,9 +26,10 @@ import {UserService} from "./user.service";
 
 
 
+
 BrowserModule,AppRouting,HttpClientModule,FormsModule,ReactiveFormsModule
   ],
-  providers: [AuthService,ReturnObj,User,UserService
+  providers: [AuthService,ReturnObj,User,UserService,
     // {
     //   provide:HTTP_INTERCEPTORS,
     //   useClass:AuthInterceptor,
