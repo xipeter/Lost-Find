@@ -1,4 +1,6 @@
 const MongoClient = require('mongodb').MongoClient;
+const ObjectId = require('mongodb').ObjectId;
+
 const assert = require('assert');
 //const url = 'mongodb://192.168.75.130:27017/test';
 const url = 'mongodb://root:123456%23@cluster0-shard-00-00-kkvhg.mongodb.net:27017,cluster0-shard-00-01-kkvhg.mongodb.net:27017,cluster0-shard-00-02-kkvhg.mongodb.net:27017/lfb?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin';
@@ -20,7 +22,7 @@ module.exports.execute = async function(execfun, callback)
 		   //const result = await db.collection('name').find({}).toArray();
 		const result = await execfun(db);
 		db.close();
-		callback(result);
+		if(callback) callback(result);
 	}
 	catch(e)
 	{
@@ -28,6 +30,8 @@ module.exports.execute = async function(execfun, callback)
 	}
 }
 
+module.exports.isValidObjectId = (s) => ObjectId.isValid(s);
 
+module.exports.safeObjectId = (s) => ObjectId.isValid(s) ? new ObjectId(s) : null;
 
 //doCrud().then(() => { console.log("CRUD test completed.") });
