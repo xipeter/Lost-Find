@@ -25,7 +25,7 @@ const route:Routes=[
         path:'signup',
         component: SignupComponent
     },{
-        path:'detail:/id',
+        path:'detail/:id',
         component:DetailCompenent
     }
 ]

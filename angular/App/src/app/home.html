@@ -43,7 +43,7 @@
                 <div class="card mb-4" *ngFor="let item of list">
                     <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
                     <div class="card-body">
-                        <h2 class="card-title">{{item['posts']['title']}} {{item['posts']['uuid']}}</h2>
+                        <h2 class="card-title">{{item['posts']['title']}}</h2>
                         <p class="card-text">{{item['posts']['desc']}}</p>
                         <button href="#" class="btn btn-primary" (click) = "gotoDetail(item['posts']['uuid'])" >Read More &rarr;</button>
                     </div>

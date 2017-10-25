@@ -4,6 +4,7 @@ import { HomeService } from './home.service';
 import { ReturnObj } from './returnobj';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Injectable } from '@angular/core';
 @Component({
     selector:'home',
     templateUrl:'home.html',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
     providers:[HomeService]
     
 })
-
+@Injectable()
 export class HomeComponent implements OnInit {
     ngOnInit(): void {
         this.showPost();

@@ -15,6 +15,7 @@ import { ReturnObj } from './returnobj';
 import {User} from "./user";
 import {UserService} from "./user.service";
 import { DetailCompenent } from './detail.component';
+import { HomeService } from './home.service';
 
 @NgModule({
   declarations: [
@@ -27,9 +28,10 @@ import { DetailCompenent } from './detail.component';
 
 
 
+
 BrowserModule,AppRouting,HttpClientModule,FormsModule,ReactiveFormsModule
   ],
-  providers: [AuthService,ReturnObj,User,UserService,
+  providers: [AuthService,ReturnObj,User,UserService,HomeService
     // {
     //   provide:HTTP_INTERCEPTORS,
     //   useClass:AuthInterceptor,

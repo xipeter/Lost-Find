@@ -40,20 +40,21 @@
                 <!-- Blog Post -->
                 <div class="card mb-4">
                     <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-                    <div class="card-body">
+                    <div class="card-body" *ngIf="detail">
                         <!--<h2 class="card-title">&#128148 Red scarf lost</h2>-->
-                        <h2 class="card-title">&#9752; Red scarf found</h2>
+                        <h2 class="card-title">&#9752; {{detail['title']}}</h2>
                         <form class="detail-form">
                             <label for="status" class="detail-label">Status: </label>
-                            <span class="detail-span" id="status">New open</span><br>
+                            <span class="detail-span" *ngIf="detail['status']==0" id="status">Lost</span><br>
+                            <span class="detail-span" *ngIf="detail['status']==1" id="status">Found</span><br>
                             <label for="location" class="detail-label">Location: </label>
-                            <span class="detail-span" id="location">MUM Student lounge</span><br>
+                            <span class="detail-span" id="location">{{detail['location']}}</span><br>
                             <label for="key-time" class="detail-label">Found Time: </label>
                             <span class="detail-span" id="key-time">03/25/2015</span><br>
                             <label for="contact" class="detail-label">Contact: </label>
                             <span class="contact" id="contact" type="email">goodpal@gmail.com</span><br>
                             <label for="description" class="detail-label">Description: </label>
-                            <p class="detail-desc" id="description">It was found on the right sofa in front of TV set.</p>
+                            <p class="detail-desc" id="description">{{detail['desc']}}</p>
                             <!--<label for="comments" class="detail-label">Comments</label>-->
     
                             <div class="detailBox">
@@ -104,7 +105,7 @@
                             </div>
     
                             <br>
-                            <a class="btn btn-primary" href="#">Go Back &larr;</a>
+                            <button class="btn btn-primary" (click)='goback()' >Go Back &larr;</button>
                         </form>
                     </div>
                     <div class="card-footer text-muted">

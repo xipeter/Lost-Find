@@ -10,9 +10,9 @@ import 'rxjs/add/operator/toPromise';
 export class HomeService{
     constructor(private ret:ReturnObj,private http :HttpClient){}
 
-    getPost(id:number):Promise<any>{
+    getPost(id:string):Promise<any>{
         // return this.getProducts().then(products=>products.find(obj=>obj.id==id));
-        const url = `http://155.254.33.141:9000/api/users/posts/${id}`;
+        const url = `http://155.254.33.141:9000/api/users/posts/`+id;
         return this.http.get(url)
         .toPromise()
         .then(data=>data)
