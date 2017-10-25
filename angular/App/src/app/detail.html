@@ -45,8 +45,8 @@
                         <h2 class="card-title">&#9752; {{detail['title']}}</h2>
                         <form class="detail-form">
                             <label for="status" class="detail-label">Status: </label>
-                            <span class="detail-span" *ngIf="detail['status']==0" id="status">Lost</span><br>
-                            <span class="detail-span" *ngIf="detail['status']==1" id="status">Found</span><br>
+                            <span class="detail-span" *ngIf="detail['status']==0" id="status">New Open</span><br>
+                            <span class="detail-span" *ngIf="detail['status']==1" id="status">Closed</span><br>
                             <label for="location" class="detail-label">Location: </label>
                             <span class="detail-span" id="location">{{detail['location']}}</span><br>
                             <label for="key-time" class="detail-label">Found Time: </label>
