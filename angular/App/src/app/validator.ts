@@ -20,5 +20,13 @@ export class Validator {
         return null;
     }
 
+    static checkPassword(control: AbstractControl) : ValidationErrors | null {
+        if (!(control.value as string).match(/^\d{6}$/)) {
+            return {notValidPwd: true}
+        }
+
+        return null;
+    }
+
 
 }

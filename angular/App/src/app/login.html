@@ -7,15 +7,13 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home
-                        <span class="sr-only">(current)</span>
-                    </a>
+                    <a class="nav-link" href="/home" id="home-hover">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" href="/login" id="signIn">Sign in</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Services</a>
+                    <a class="nav-link" href="/signup" id="signUp-hover">Sign up</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>
@@ -38,7 +36,7 @@
 
             <!-- Blog Post -->
             <div class="card mb-4">
-                <div id="card-img-top"  alt="Card image cap"></div>
+                <img [src]='imagePath' class="card-img-top" alt="Card image cap">
                 <div class="card-body">
                     <!--<h2 class="card-title">Post Title</h2>-->
                     <form [formGroup] = "signinForm" #f="ngForm"  class="form"  (ngSubmit)=onLogin(f.value) >
@@ -63,14 +61,14 @@
                 signinForm.get('email').errors.mum" class="alert alert-danger">
                         you must input the email address from MUM.
                 </div>
-                <div class="alert alert-danger" *ngIf="ret" >
-                    {{ret.Message}}
+                <div class="alert alert-danger" *ngIf="returnobj.Message" >
+                    {{returnobj.Message}}
 
                 </div>
 
                 <div class="card-footer text-muted">
                     Not a member yet?
-                    <a href="#"> Sign up here.</a>
+                    <a href="/signup"> Sign up here.</a>
                 </div>
             </div>
 

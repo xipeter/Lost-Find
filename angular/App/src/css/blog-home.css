@@ -18,10 +18,29 @@ h1 {
 
 h2, h5 {
   color: #1E56A0;
+  margin-top: 0px;
+  padding: 12px 12px 12px 12px;
 }
 
 .navbar-dark .navbar-nav .nav-link {
   color: #5ec5eb;
+}
+
+#navbarResponsive {
+  display: flex!important;
+  flex: auto;
+}
+
+a.nav-link {
+  font-size: initial;
+}
+
+a#home, a#signUp, a#signIn {
+  color: #fff;
+}
+
+a#home-hover:hover, a#signIn-hover:hover, a#signUp-hover:hover, a#signOut-hover:hover {
+  color: #E3EFF3;
 }
 
 .login-form {
@@ -74,6 +93,11 @@ h2, h5 {
   body {
     padding-top: 56px;
   }
+}
+
+input#first_name, input#last_name, input#email, input#confirm_email, input#password, input#confirm_password{
+  width: 260px;
+  margin-bottom: 5px;
 }
 
 @import url(//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css);

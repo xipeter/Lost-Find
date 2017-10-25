@@ -8,15 +8,13 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home
-                        <span class="sr-only">(current)</span>
-                    </a>
+                    <a class="nav-link" href="/home" id="home-hover">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" href="/login" id="signIn-hover">Sign in</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Services</a>
+                    <a class="nav-link" href="/signup" id="signUp">Sign up</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>
@@ -44,30 +42,93 @@
                     <!--<h2 class="card-title">Post Title</h2>-->
                     <form [formGroup]="signupForm" #f="ngForm" class="signup-form" (ngSubmit)= register(f)>
                         <br>
-                        <input ngModel formControlName="firstname" class="signup-input" type="text" name="first_name" id="first_name"
-                               style="width: 240px; margin-bottom: 5px;" placeholder=" First Name">
-                        <div class="alert-danger" *ngIf="formControlName.touched && !formControlName.valid">
-                            <div *ngIf="productName.errors.required">Product name is required</div>
-                            <div *ngIf="productName.errors.minlength">Product name should be minimum 5 characters.</div>
-                            <div *ngIf="productName.errors.maxlength">Product name should be maximum 20 characters. </div>
-                            <div *ngIf="productName.errors.pattern">Product name does not match the pattern.</div>
-                        </div>
-                        <input ngModel formControlName="lastname" class="signup-input" type="text" name="last_name" id="last_name" style="width: 240px" placeholder=" Last Name">
-                        <br>
+                        <input ngModel formControlName="firstName" class="signup-input" type="text" name="first_name" id="first_name"
+                               placeholder=" First Name"><br>
+                        <div class="alert-danger" *ngIf="
+                            signupForm.get('firstName').touched &&
+                            signupForm.get('firstName').errors &&
+                            signupForm.get('firstName').errors.required">
+                            First name is required.</div>
+                        <div class="alert-danger" *ngIf="
+                            signupForm.get('firstName').touched &&
+                            signupForm.get('firstName').errors &&
+                            signupForm.get('firstName').errors.notAlphabet">
+                            First name must be alphabets.</div>
+                        <input ngModel formControlName="lastName" class="signup-input" type="text" name="last_name" id="last_name"
+                               placeholder=" Last Name"><br>
+                        <div class="alert-danger" *ngIf="
+                            signupForm.get('lastName').touched &&
+                            signupForm.get('lastName').errors &&
+                            signupForm.get('lastName').errors.required">
+                            Last name is required.</div>
+                        <div class="alert-danger" *ngIf="
+                            signupForm.get('lastName').touched &&
+                            signupForm.get('lastName').errors &&
+                            signupForm.get('lastName').errors.notAlphabet">
+                            Last name must be alphabets.</div>
                         <input ngModel formControlName="email" class="signup-input" type="email" name="email" id="email"
-                               style="width: 240px; margin-bottom: 5px;" placeholder=" Email">
-                        <input class="signup-input" type="email" name="reenter_email" id="reenter_email" style="width: 240px" placeholder=" Re-enter Email">
+                               placeholder=" Email">
                         <br>
-                        <input class="signup-input" type="password" name="password" id="password" style="width: 240px" placeholder=" Password">
-                        <input class="signup-input" type="password" name="reenter_password" id="reenter_password" style="width: 240px" placeholder=" Re-enter password">
+                        <div class="alert-danger" *ngIf="
+                            signupForm.get('email').touched &&
+                            signupForm.get('email').errors &&
+                            signupForm.get('email').errors.required">
+                            Have to input email address.
+                        </div>
+                        <div class="alert-danger" *ngIf="
+                            signupForm.get('email').touched &&
+                            signupForm.get('email').errors &&
+                            signupForm.get('email').errors.mum">
+                            Have to input a MUM email address.
+                        </div>
+                        <input ngModel formControlName="confirmEmail" class="signup-input" type="email" name="confirm_email" id="confirm_email"
+                               placeholder=" Confirm Email">
                         <br>
+                        <div class="alert-danger" *ngIf="
+                            signupForm.get('confirmEmail').touched &&
+                            signupForm.get('confirmEmail').errors &&
+                            signupForm.get('confirmEmail').errors.required">
+                            Have to confirm email address.
+                        </div>
+                        <div class="alert-danger" *ngIf="
+                            signupForm.get('confirmEmail').touched &&
+                            signupForm.get('confirmEmail').value != signupForm.get('email').value">
+                            Input email address doesn't match.</div>
+                        <input ngModel formControlName="password" class="signup-input" type="password" name="password" id="password"
+                               placeholder=" Password">
                         <br>
-                        <button class="btn btn-primary" style="width: 348px">Sign Up</button>
+                        <div class="alert-danger" *ngIf="
+                            signupForm.get('password').touched &&
+                            signupForm.get('password').errors &&
+                            signupForm.get('password').errors.required">
+                            Have to input password.
+                        </div>
+                        <div class="alert-danger" *ngIf="
+                            signupForm.get('password').touched &&
+                            signupForm.get('password').errors &&
+                            signupForm.get('password').errors.notValidPwd">
+                            Have to input 6 digits number.
+                        </div>
+                        <input ngModel formControlName="confirmPassword"class="signup-input" type="password" name="confirm_password" id="confirm_password"
+                               placeholder=" Confirm password">
+                        <br>
+                        <div class="alert-danger" *ngIf="
+                            signupForm.get('confirmPassword').touched &&
+                            signupForm.get('confirmPassword').errors &&
+                            signupForm.get('confirmPassword').errors.required">
+                            Have to confirm email address.
+                        </div>
+                        <div class="alert-danger" *ngIf="
+                            signupForm.get('confirmPassword').touched &&
+                            signupForm.get('confirmPassword').value != signupForm.get('password').value">
+                            Input password doesn't match.</div>
+                        <br>
+                        <button class="btn btn-primary" style="width: 260px">Sign Up</button>
                     </form>
                 </div>
                 <div class="card-footer text-muted">
                     Already a member?
-                    <a href="#"> Login here.</a>
+                    <a href="/login"> Login here.</a>
                 </div>
             </div>
 

@@ -1,10 +1,12 @@
-import {Component} from "@angular/core";
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {Component, Injectable} from "@angular/core";
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import {User} from "./user";
 import {UserService} from "./user.service";
 import {Router} from "@angular/router";
 import {ReturnObj} from "./returnobj";
 import {Validator} from "./validator";
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
     selector:'signup',
@@ -13,41 +15,61 @@ import {Validator} from "./validator";
 
 })
 
+@Injectable()
 export class SignupComponent {
 
     imagePath = '/assets/img/signup.jpg';
 
-    model: any = {};
-    loading = false;
     ret:ReturnObj;
 
     constructor(
         private user: User,
-        private userService: UserService
-    ) { }
+        private userService: UserService,
+        private http: HttpClient,
+        private router: Router,
+        private returnObj:ReturnObj
+
+    ) {};
 
     signupForm = new FormGroup({
 
-        firstname: new FormControl('', [Validators.required, Validator.checkName]),
-        lastname: new FormControl(),
-        email: new FormControl(),
-        password: new FormControl()
+        firstName: new FormControl('', [Validators.required, Validator.checkName]),
+        lastName: new FormControl('', [Validators.required, Validator.checkName]),
+        email: new FormControl('', [Validators.required, Validator.check]),
+        confirmEmail: new FormControl('', Validators.required),
+        password: new FormControl('', [Validators.required, Validator.checkPassword]),
+        confirmPassword: new FormControl()
 
     });
 
 
     register(form) {
 
-        this.user.firstName = form.firstName;
-        this.user.lastName = form.lastName;
+        this.user.fn = form.firstName;
+        this.user.ln = form.lastName;
         this.user.email = form.email;
         this.user.pwd = form.password;
 
-        this.loading = true;
-
-        this.ret = this.userService.create(this.user);
         console.log(this.ret);
 
+        this.http.post('http://155.254.33.141:3000/api/users', this.user)
+            .subscribe(
+                data => {
+                    if(data['status'] == 1){
+                        this.returnObj.code = 1;
+                        this.returnObj.Message = 'Sign up succeed!';
+                        this.router.navigate(['/home']);
+
+                    }else{
+                        this.returnObj.code = 0;
+                        this.returnObj.Message = 'Please try again';
+                    }
+
+
+                },
+                error => {
+                    console.log(error);
+                });
     }
 
 

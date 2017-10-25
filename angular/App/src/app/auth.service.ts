@@ -8,27 +8,12 @@ import { ReturnObj } from './returnobj';
 @Injectable()
 export class AuthService {
     constructor(private http: HttpClient,private returnobj :ReturnObj) { }
-    login(credentials) :ReturnObj {
-        this.http.post('http://155.254.33.141:3000/api/users/check', credentials)
-            .subscribe(
-            // data => localStorage.setItem('token', data['token']),
+    login(credentials)   {
+        
+        
             
-            data => {
-                if(data['status']==0){
-                    this.returnobj.code=0;
-                    this.returnobj.Message = 'Your username or password is invalid,Please try again';
-                    // console.log("service"+this.returnobj);
-                }else{
-                    this.returnobj.code =1;
-                }
-                
-            },
-            error =>{ 
-                console.log(error);
-                
-                
-            });
-            return this.returnobj;
+           
+            
     }
 
 

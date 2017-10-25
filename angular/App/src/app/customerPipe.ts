@@ -7,7 +7,7 @@ import { User } from './user';
 
 export class CustomerPipe implements PipeTransform {
     transform(obj: User) {
-        return obj.firstName+obj.lastName;
+        return obj.fn+obj.ln;
     }
 
 }
