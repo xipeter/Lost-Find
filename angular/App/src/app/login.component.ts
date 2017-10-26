@@ -48,9 +48,15 @@ export class LoginComponent implements OnInit{
             }else{
 
                 this.returnobj.code =1;
-                this.auth.login(credentials);
+
+                this.http.get("http://155.254.33.141:9000/api/users/"+credentials.email).subscribe(data=>{
+                    credentials.fullname =  data['fn']+' '+data['ln'];
+                    localStorage.setItem('currentUser', JSON.stringify(credentials));
+                    
+                    this.route.navigate([this.returnUrl]);
+                });
+
                 
-                this.route.navigate([this.returnUrl])
             }
             
             
