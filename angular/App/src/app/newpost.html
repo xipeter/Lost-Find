@@ -40,24 +40,28 @@
                     <form #postForm="ngForm" (ngSubmit)="newPost(postForm)" class="post-form">
                         <div class="form-group">
                             <label for="title" class="post-label">Title: </label>
-                            <input type="text" class="post-input" id="title"><br>
+                            <input required ngModel #title="ngModel" type="text" class="post-input" name="title" id="title"><br>
+                            <div class="alert-danger" *ngIf="title.touched && !title.valid">Title can't be blank.</div>
                             <label for="status" class="post-label">Status: </label>
                             <span class="post-span" id="status">New Open</span><br>
                             <label for="section" class="post-label">Section: </label>
                             <select required ngModel #section="ngModel" name="section" id="section"
                                     (ngModel)="sections">
                                 <option selected disabled value="">--select section--</option>
-                                <option *ngFor="let section of sections" >{{section}}</option>
+                                <option *ngFor="let section of sections" value="{{section.value}}">{{section.name}}</option>
                             </select>
+                            <div class="alert-danger" *ngIf="section.touched && !section.valid">Section can't be blank.</div>
                             <br>
                             <label for="location" class="post-label">Location: </label>
-                            <input type="text" class="post-input" id="location"><br>
-                            <label for="key_time" class="post-label">{{section.value}} Time: </label>
+                            <input ngModel #location="ngModel" name="location" type="text" class="post-input" id="location"><br>
+                            <div class="alert-danger" *ngIf="location.touched && !location.valid">Location can't be blank.</div>
+                            <label for="key_time" class="post-label">{{section.name}} Time: </label>
                             <input ngModel #keyTime="ngModel" name="key_time" type="date" class="post-input" id="key_time"><br>
+                            <div class="alert-danger" *ngIf="keyTime.touched && !keyTime.valid">{{section.value}} Time can't be blank.</div>
                             <label for="description" class="post-label">Description: </label><br>
                             <textarea ngModel #description="ngModel" class="post-desc" name="description" id="description" placeholder="Input details here."></textarea>
                             <br>
-                            <button class="btn btn-primary" style="width: 260px">Submit post</button>
+                            <button class="btn btn-primary" style="width: 310px">Submit post</button>
 
                         </div>
 
@@ -67,8 +71,8 @@
                     </form>
                 </div>
                 <div class="card-footer text-muted">
-                    Posted on January 1, 2017 by
-                    <a href="#">Start Bootstrap</a>
+                    <!--Posted on January 1, 2017 by-->
+                    <span>{{date | date:'dd/MM/yyyy'}}</span>
                 </div>
             </div>
 
