@@ -103,9 +103,9 @@ var userDAO = function () {
 		if(!id) {callback({});return;}
 		dbo.execute(db=>{return db.collection(tableName)
 		.aggregate(
-				[{"$unwind":"$posts"},{"$match":{"posts.uuid":id}},{"$project":{"posts":1,"_id":0}}],
+				[{"$unwind":"$posts"},{"$match":{"posts.uuid":id}}],
 				(err, result)=>{
-					if(result && result.length>0){callback(result[0].posts);return;}
+					if(result && result.length>0){callback(result[0]);return;}
 					callback({});
 				}
 			);
