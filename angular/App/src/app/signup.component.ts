@@ -57,6 +57,7 @@ export class SignupComponent {
                         this.returnObj.Message = 'Sign up succeed!';
                         // this.router.navigate(['/home']);
                         console.log(data);
+                        
 
                     }else{
                         this.returnObj.code = 0;
