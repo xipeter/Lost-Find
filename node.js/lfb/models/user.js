@@ -1,9 +1,10 @@
-var user = function (fn,ln,pwd,email){
+var user = function (fn,ln,pwd,email,regat){
 	//{fn:'Xianjian', ln:'Bao', password:'123456', email:'baoxianjian@gmail.com', 
 	this.fn = fn;
 	this.ln = ln;
 	this.password=pwd;
 	this.email = email;
+	this.regat = regat;
 }
 
 var post = function(title,pic,type,status,key_time,location,desc,pubat)
