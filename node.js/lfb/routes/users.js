@@ -7,6 +7,8 @@ var userDAO=require('../daos/user.dao');
 var dao = new userDAO();
 
 
+//----------------------------users api---------------------------------
+
 /* GET users listing. */
 router.get('/', function(req, res, next) {
 	dao.getUsers(a=>{res.send(a)});
@@ -18,9 +20,6 @@ router.get('/:email', function(req, res, next) {
 	const email = req.params.email;
 	dao.getUserByEmail(email,a=>{res.send(a)}); 
 });
-
-
-
 
 
 /* POST check user. */
@@ -49,7 +48,7 @@ router.post('/', function(req, res, next) {
 });
 
 
-
+//----------------------------posts api---------------------------------
 
 
 /* GET users' posts. */
@@ -89,6 +88,8 @@ router.post('/posts', function(req, res, next) {
 
 
 
+//----------------------------comments api---------------------------------
+
 /* GET comments listing. */
 router.get('/posts/:pid/comments', function(req, res, next) {
 	const pid = req.params.pid;
@@ -108,24 +109,12 @@ router.post('/posts/:pid/comments', function(req, res, next) {
 
 
 
-
-
 /* PUT user. */
 router.put('/posts/:id', function(req, res, next) {  
 	var id = req.params.id;
 	var body = req.body;
 	
 	dao.updatePostById(id,body.status,a=>res.send({status:a.result.n})) ;
-});
-
-
-/* DELETE user. */
-router.delete('/:id', function(req, res, next) {  
-	var id = req.params.id;
-	
-	dao.deleteUser(id,a=>res.send(a));
-	//var deletedUser = dao.deleteUser(id);
-	//res.send(deletedUser);
 });
 
 
