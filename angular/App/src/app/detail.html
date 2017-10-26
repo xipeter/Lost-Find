@@ -58,33 +58,16 @@
                                 </div>
                                 <div class="actionBox">
                                     <ul class="commentList">
-                                        <li>
+                                        <li *ngFor="let item of comments">
                                             <div class="commenter">
-                                                Xianjian Bao
+                                                {{item['email']}}
                                             </div>
                                             <div class="commentText">
-                                                <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
+                                                <p class="">{{item['comment']}}</p> <span class="date sub-text">on March 5th, 2014</span>
     
                                             </div>
                                         </li>
-                                        <li>
-                                            <div class="commenter">
-                                                Yi Cai
-                                            </div>
-                                            <div class="commentText">
-                                                <p class="">Hello this is a test comment and this comment is particularly very long and it goes on and on and on.</p> <span class="date sub-text">on March 5th, 2014</span>
-    
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="commenter">
-                                                Zongfei Xi
-                                            </div>
-                                            <div class="commentText">
-                                                <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
-    
-                                            </div>
-                                        </li>
+                                       
                                     </ul>
                                     <form class="form-inline" role="form">
                                     </form>

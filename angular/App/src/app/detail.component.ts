@@ -24,8 +24,8 @@ export class DetailCompenent implements OnInit {
             this.http.get('http://155.254.33.141:9000/api/users/posts/'+data['uuid']+'/comments').subscribe(
                 data=>{
                     console.log(data);
-                    this.comment = data;
-                    console.log(this.comment);
+                    this.comments = data;
+                    console.log(this.comments);
                     
                 }
             );
@@ -34,7 +34,7 @@ export class DetailCompenent implements OnInit {
     }
     constructor(private route:ActivatedRoute,private homeService:HomeService,private location:Location,private http:HttpClient){}
     detail;
-    comment;
+    comments;
     goback(){
         this.location.back();
     }
