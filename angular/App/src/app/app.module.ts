@@ -22,6 +22,7 @@ import { AuthGuard } from './auth-guard.service';
 import {NewpostComponent} from "./newpost.component";
 
 
+
 @NgModule({
   declarations: [
     AppComponent,HomeComponent,LoginComponent,SignupComponent,DetailCompenent,NewpostComponent
@@ -36,7 +37,7 @@ import {NewpostComponent} from "./newpost.component";
 
 BrowserModule,AppRouting,HttpClientModule,FormsModule,ReactiveFormsModule
   ],
-  providers: [AuthService,ReturnObj,User,UserService,HomeService,AuthGuard,
+  providers: [AuthService,ReturnObj,User,UserService,HomeService,AuthGuard
     // {
     //   provide:HTTP_INTERCEPTORS,
     //   useClass:AuthInterceptor,

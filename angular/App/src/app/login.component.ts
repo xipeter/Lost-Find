@@ -1,16 +1,17 @@
 
-import { Component, Injectable } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { AuthService } from './auth.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Validator } from './validator';
 import { ReturnObj } from './returnobj';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 
 export interface Credentials {
     email:string,
-    pwd:string
+    pwd:string,
+    fullname:string;
 }
 
 @Component({
@@ -20,7 +21,10 @@ export interface Credentials {
 })
 
 @Injectable()
-export class LoginComponent{
+export class LoginComponent implements OnInit{
+    ngOnInit(): void {
+        this.returnUrl = this.router.snapshot.queryParams['returnURL'] || '/';
+    }
 
     imagePath = '/assets/img/lostandfound.jpg';
     signinForm = new FormGroup({
@@ -29,8 +33,8 @@ export class LoginComponent{
 
     });
     credentials: Credentials;
-    constructor(private auth: AuthService, private route:Router,private http: HttpClient,private returnobj:ReturnObj) { }
-
+    constructor(private auth: AuthService, private route:Router,private http: HttpClient,private returnobj:ReturnObj,private router:ActivatedRoute) { }
+    returnUrl:string;
     onLogin(credentials) {
         this.http.post('http://155.254.33.141:3000/api/users/check', credentials)
         .subscribe(
@@ -45,7 +49,8 @@ export class LoginComponent{
 
                 this.returnobj.code =1;
                 this.auth.login(credentials);
-                this.route.navigateByUrl("home");
+                
+                this.route.navigate([this.returnUrl])
             }
             
             

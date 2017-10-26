@@ -43,8 +43,8 @@
                 <div class="card mb-4" *ngFor="let item of list">
                     <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
                     <div class="card-body">
-                        <h2 class="card-title" *ngIf="item['posts']['status']==0">{{item['posts']['title']}}[New Open]</h2>
-                        <h2 class="card-title" *ngIf="item['posts']['status']==1">{{item['posts']['title']}}[Closed]</h2>
+                        <h2 class="card-title" *ngIf="item['posts']['status']==0">  {{item['posts']['title']}} </h2>
+                        <h2 class="card-title" *ngIf="item['posts']['status']==1"> &#9752; {{item['posts']['title']}}</h2>
                        
                         <label for="desc" class="detail-label">Desc: </label>
                         <label class="card-text">{{item['posts']['desc']}}</label><br />
@@ -54,7 +54,7 @@
                     </div>
                     <div class="card-footer text-muted">
                         Posted on January 1, 2017 by
-                        <a href="#">{{item['fn']}} {{item['ln']}}</a>
+                        <a href="#">{{item['fn']}} {{item['ln']}} </a>
                     </div>
                 </div>
         </div> 
