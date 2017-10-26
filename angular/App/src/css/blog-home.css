@@ -130,8 +130,8 @@ textarea {
   height: auto;
 }
 
-select#section {
-  width: 150px;
+select#section, input#location {
+  width: 156px;
 }
 
 .commentBox {

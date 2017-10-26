@@ -43,13 +43,19 @@
                 <div class="card mb-4" *ngFor="let item of list">
                     <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
                     <div class="card-body">
-                        <h2 class="card-title" *ngIf="item['posts']['status']==0">{{item['posts']['title']}}[New Open]</h2>
-                        <h2 class="card-title" *ngIf="item['posts']['status']==1">{{item['posts']['title']}}[Closed]</h2>
-                       
-                        <label for="desc" class="detail-label">Desc: </label>
-                        <label class="card-text">{{item['posts']['desc']}}</label><br />
+
+                        <h2 class="card-title" *ngIf="item['posts']['type']==0">&#9785; {{item['posts']['title']}}</h2>
+                        <h2 class="card-title" *ngIf="item['posts']['type']==1">&#9829; {{item['posts']['title']}}</h2>
+                        <label for="status" class="detail-label">Status: </label>
+                        <span class="detail-span" *ngIf="item['posts']['status']==0" id="status">New Open</span><br>
+                        <span class="detail-span" *ngIf="item['posts']['status']==1" id="status">Closed</span><br>
+                        <label for="key-time" class="detail-label">Found Time: </label>
+                        <span class="detail-span" id="key-time">03/25/2015</span><br>
                         <label for="location" class="detail-label">Location: </label>
                         <span class="detail-span" id="location">{{item['posts']['location']}}</span><br>
+
+                        <label for="description" class="detail-label">Description: </label><br>
+                        <label class="card-text" id="description">{{item['posts']['desc']}}</label><br />
                         <button href="#" class="btn btn-primary" (click) = "gotoDetail(item['posts']['uuid'])" >Read More &rarr;</button>
                     </div>
                     <div class="card-footer text-muted">

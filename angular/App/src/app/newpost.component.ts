@@ -14,16 +14,10 @@ import {ReturnObj} from "./returnobj";
 
 })
 
-export class NewpostComponent implements OnInit {
+export class NewpostComponent {
 
-    sections = ['lost', 'found'];
+    sections = ['Lost', 'Found'];
 
-
-
-    ngOnInit(): void {
-
-
-    }
     constructor(
         private user: User,
         private router:Router,
@@ -31,14 +25,11 @@ export class NewpostComponent implements OnInit {
         private returnObj: ReturnObj
     ){}
 
-    detail;
-
-    // get current user???
-
     newPost(form) {
+        let currentUser = localStorage.getItem('currentUser');
 
         let newPost = {
-            email:this.user.email,
+            email:currentUser['email'],
             title:form.value.title,
             type: form.value.section,
             key_time: form.value.key_time,
@@ -56,7 +47,7 @@ export class NewpostComponent implements OnInit {
 
                     }else{
                         this.returnObj.code = 0;
-                        this.returnObj.Message = 'Please try again';
+                        this.returnObj.Message = 'Submit failed!';
                     }
 
 
