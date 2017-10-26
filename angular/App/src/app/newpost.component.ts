@@ -65,8 +65,8 @@ export class NewpostComponent {
                     if(data['status'] == 1){
                         this.returnObj.code = 1;
                         this.returnObj.Message = 'Submit succeed!';
-                        // this.router.navigate(['/home']);
-                        console.log(data);
+                         this.router.navigate(['/home']);
+                        // console.log(data);
 
                     }else{
                         this.returnObj.code = 0;
