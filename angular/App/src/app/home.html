@@ -48,7 +48,7 @@
                         <h2 class="card-title" *ngIf="item['posts']['type']==0">&#9785; {{item['posts']['title']}}</h2>
                         <h2 class="card-title" *ngIf="item['posts']['type']==1">&#9829; {{item['posts']['title']}}</h2>
                         <label for="status" class="detail-label">Status: </label>
-                        <span class="detail-span" *ngIf="item['posts']['status']==0" id="status">New Open</span><br>
+                        <span class="detail-span" *ngIf="item['posts']['status']==0" id="status">New Open</span>
                         <span class="detail-span" *ngIf="item['posts']['status']==1" id="status">Closed</span><br>
                         <label for="key-time" class="detail-label">Found Time: </label>
                         <span class="detail-span" id="key-time">03/25/2015</span><br>
