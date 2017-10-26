@@ -6,8 +6,9 @@ import { User } from './user';
 })
 
 export class CustomerPipe implements PipeTransform {
-    transform(obj: User) {
-        return obj.fn+obj.ln;
+    transform(value: any, ...args: any[]) {
+        return value+args;
     }
+    
 
 }
