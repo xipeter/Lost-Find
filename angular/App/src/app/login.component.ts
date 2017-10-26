@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 
-interface Credentials {
+export interface Credentials {
     email:string,
     pwd:string
 }
@@ -42,7 +42,9 @@ export class LoginComponent{
                 this.returnobj.Message = 'Your username or password is invalid,Please try again';
                 // console.log("service"+this.returnobj);
             }else{
+
                 this.returnobj.code =1;
+                this.auth.login(credentials);
                 this.route.navigateByUrl("home");
             }
             
