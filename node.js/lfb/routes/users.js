@@ -127,8 +127,8 @@ router.post('/posts/:pid/comments', function(req, res, next) {
 
 
 
-/* PUT change status of posts. */
-router.put('/posts/:id', function(req, res, next) {  
+/* PUT/POST change status of posts. */
+router.post('/posts/:id', function(req, res, next) {  
 	var id = req.params.id;
 	var body = req.body;
 	
