@@ -15,6 +15,8 @@ router.get('/', function(req, res, next) {
 });
 
 
+
+
 /* GET user by email */
 router.get('/:email', function(req, res, next) {
 	const email = req.params.email;
@@ -51,6 +53,8 @@ router.post('/', function(req, res, next) {
 //----------------------------posts api---------------------------------
 
 
+
+
 /* GET users' posts. */
 router.get('/:uid/posts/:type', function(req, res, next) {
 	const uid = req.params.uid;
@@ -59,10 +63,18 @@ router.get('/:uid/posts/:type', function(req, res, next) {
 });
 
 
+/* GET posts all */
+router.get('/posts/all', function(req, res, next) {
+	dao.getAllPosts(a=>{res.send(a)}); //mongo db
+});
+
+
+
+
 /* GET posts by type */
 router.get('/posts/type/:type', function(req, res, next) {
 	const type = req.params.type;
-	dao.getAllPosts(type,a=>{res.send(a)}); //mongo db
+	dao.getAllPostsByType(type,a=>{res.send(a)}); //mongo db
 });
 
 /* GET posts by status */
