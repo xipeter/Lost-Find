@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit{
     constructor(private auth: AuthService, private route:Router,private http: HttpClient,private returnobj:ReturnObj,private router:ActivatedRoute) { }
     returnUrl:string;
     onLogin(credentials) {
-        this.http.post('http://155.254.33.141:3000/api/users/check', credentials)
+        this.http.post('http://155.254.33.141:9000/api/users/check', credentials)
         .subscribe(
         // data => localStorage.setItem('token', data['token']),
         

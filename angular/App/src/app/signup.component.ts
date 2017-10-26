@@ -49,7 +49,7 @@ export class SignupComponent {
             pwd: form.value.password
         }
 
-        this.http.post('http://155.254.33.141:3000/api/users', user)
+        this.http.post('http://155.254.33.141:9000/api/users', user)
             .subscribe(
                 data => {
                     if(data['status'] == 1){

@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
     constructor(private service: HomeService,private http:HttpClient,private router:Router,private auth:AuthService){}
     showPost():void{
         console.log('hellohome');
-        this.http.get('http://155.254.33.141:3000/api/users/posts/all').subscribe(
+        this.http.get('http://155.254.33.141:9000/api/users/posts/all').subscribe(
             data=>{
                 console.log(data);
                 this.list = data;
