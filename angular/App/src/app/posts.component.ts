@@ -21,6 +21,8 @@ export class PostsComponent implements OnInit {
     }
     ret:ReturnObj;
     list;
+    findImg = '/assets/img/found.jpg';
+    lostImg = '/assets/img/lost.png';
     
     constructor(private service: PostsService,private http:HttpClient,private route:ActivatedRoute, private router: Router,private auth:AuthService){}
 	
