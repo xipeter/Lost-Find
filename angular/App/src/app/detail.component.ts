@@ -19,9 +19,10 @@ export class DetailCompenent implements OnInit {
         ((para:ParamMap)=>{
             return this.homeService.getPost(para.get('id'));
         }).subscribe(data=>{
-            this.detail = data;
-            // console.log(this.detail);
-            this.http.get('http://155.254.33.141:9000/api/users/posts/'+data['uuid']+'/comments').subscribe(
+            this.detail = data['posts'];
+            this.user = data;
+            console.log(data);
+            this.http.get('http://155.254.33.141:9000/api/users/posts/'+data['posts']['uuid']+'/comments').subscribe(
                 data=>{
                     console.log(data);
                     this.comments = data;
@@ -35,6 +36,29 @@ export class DetailCompenent implements OnInit {
     constructor(private route:ActivatedRoute,private homeService:HomeService,private location:Location,private http:HttpClient){}
     detail;
     comments;
+    user;
+
+    currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+    close() {
+        console.log(this.detail);
+        this.detail.status = '1';
+
+        this.http.post('http://155.254.33.141:9000/api/users/posts/'+this.user['posts']['uuid'],{status:'1'})
+            .subscribe(
+                data => {
+                    if (data['status'] == '1') {
+                        console.log('update succeed')
+                    }
+
+                    else {
+                        console.log('update failed')
+                    }
+                }
+            )
+
+    }
+
     goback(){
         this.location.back();
     }
