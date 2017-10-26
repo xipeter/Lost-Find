@@ -37,6 +37,7 @@ export class DetailCompenent implements OnInit {
     detail;
     comments;
     user;
+    comment;
 
     currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
@@ -61,6 +62,29 @@ export class DetailCompenent implements OnInit {
 
     goback(){
         this.location.back();
+    }
+
+    addComment(){
+        console.log(this.comment);
+
+        this.http.post('：http://155.254.33.141:9000/api/users/posts/' + this.user['posts']['uuid'] + '/comments',
+            {email:this.currentUser['email'], comment:this.comment})
+            .subscribe(
+                data => {
+                    if (data['status'] == '1') {
+
+
+                        console.log('add comment succeed');
+                        window.location.reload();
+
+                    }
+
+                    else {
+                        console.log('add comment failed')
+                    }
+                }
+            )
+
     }
 
 }
