@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 @Component({
     selector:'posts',
-    templateUrl:'posts.html',
+    templateUrl:'home.html',
     styleUrls:['../css/blog-home.css'],
     providers:[PostsService]
     
