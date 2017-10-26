@@ -52,13 +52,14 @@ export class SignupComponent {
 
         console.log(this.ret);
 
-        this.http.post('http://155.254.33.141:3000/api/users', this.user)
+        this.http.post('http://155.254.33.141:3000/api/users', JSON.stringify(this.user))
             .subscribe(
                 data => {
                     if(data['status'] == 1){
                         this.returnObj.code = 1;
                         this.returnObj.Message = 'Sign up succeed!';
-                        this.router.navigate(['/home']);
+                        console.log(data);
+                        // this.router.navigate(['/home']);
 
                     }else{
                         this.returnObj.code = 0;

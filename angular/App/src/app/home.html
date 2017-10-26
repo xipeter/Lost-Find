@@ -11,7 +11,9 @@
             <a class="nav-link" href="/home" id="home">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/login" id="signIn-hover">Sign in</a>
+
+            <a *ngIf="auth.loggedIn()" class="nav-link" href="/login" id="signIn-hover" (click) = 'signout()' >Sign out</a>
+            <a *ngIf="!auth.loggedIn()" class="nav-link" href="/login" id="signIn-hover">Sign in</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/signup" id="signUp-hover">Sign up</a>
