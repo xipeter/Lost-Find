@@ -38,6 +38,8 @@ export class DetailCompenent implements OnInit {
     comments;
     user;
     comment;
+    findImg = '/assets/img/found.jpg';
+    lostImg = '/assets/img/lost.png';
 
     currentUser = JSON.parse(localStorage.getItem('currentUser'));
 

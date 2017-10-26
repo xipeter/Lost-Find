@@ -33,9 +33,10 @@
                 </h1>
     
                 <!-- Blog Post -->
-                <div class="card mb-4">
-                    <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-                    <div class="card-body" *ngIf="detail">
+                <div class="card mb-4" *ngIf="detail">
+                        <img class="card-img-top" *ngIf="detail['type']==0" [src]="lostImg" alt="Card image cap">
+                        <img class="card-img-top" *ngIf="detail['type']==1" [src]="findImg" alt="Card image cap">
+                    <div class="card-body" >
                         <h2 class="card-title" *ngIf="detail['type']==0">&#9785; {{detail['title']}}</h2>
                         <h2 class="card-title" *ngIf="detail['type']==1">&#9829; {{detail['title']}}</h2>
                         <form class="detail-form">
