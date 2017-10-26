@@ -17,8 +17,8 @@ import {NewpostComponent} from "./newpost.component";
 const route:Routes=[
     {
         path:'home',
-        component:HomeComponent,
-        canActivate:[AuthGuard]
+        component:HomeComponent
+        // canActivate:[AuthGuard]
     },
     {
         path:'posts/:cat/:val',
