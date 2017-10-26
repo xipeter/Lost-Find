@@ -111,15 +111,11 @@ router.post('/posts/:pid/comments', function(req, res, next) {
 
 
 /* PUT user. */
-router.put('/:id', function(req, res, next) {  
+router.put('/posts/:id', function(req, res, next) {  
 	var id = req.params.id;
 	var body = req.body;
-	var user = dao.newUser(body.name, body.author, body.isbn);
 	
-	dao.updateUser(id,user,a=>res.send(a)) ;
-		
-	//var updatedUser = dao.updateUser(id,user);
-	//res.send(updatedUser);
+	dao.updatePostById(id,body.status,a=>res.send({status:a.result.n})) ;
 });
 
 

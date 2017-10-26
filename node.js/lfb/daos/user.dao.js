@@ -109,7 +109,11 @@ db.users.update({"email":"baoxianjian@gmail.com"},{$addToSet:{posts:{
 		dbo.execute(db=>{return db.collection(tableName).update({email:email},{$addToSet:{posts:post}});},callback);
 	}
 	
-	
+    this.updatePostById = function (pid,status,callback)
+    {
+		status = parseInt(status);
+		dbo.execute(db=>{return db.collection(tableName).update({"posts.uuid":pid}, {$set:{"posts.$.status":status}});},callback);
+    }
 	
 
 
