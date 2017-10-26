@@ -40,7 +40,11 @@
                         <h2 class="card-title" *ngIf="detail['type']==1">&#9829; {{detail['title']}}</h2>
                         <form class="detail-form">
                             <label for="status" class="detail-label">Status: </label>
-                            <span class="detail-span" *ngIf="detail['status']==0" id="status">New Open</span><br>
+                            <span class="detail-span" *ngIf="detail['status']==0" id="status">New open </span>
+                            <button class="btn btn-primary" (click)="close()"
+                                    *ngIf="currentUser['email'] == user['email'] && detail['status']==0">
+                            Close</button>
+
                             <span class="detail-span" *ngIf="detail['status']==1" id="status">Closed</span><br>
                             <label for="location" class="detail-label">Location: </label>
                             <span class="detail-span" id="location">{{detail['location']}}</span><br>
@@ -86,9 +90,9 @@
                             <button class="btn btn-primary" (click)='goback()' >Go Back &larr;</button>
                         </form>
                     </div>
-                    <div class="card-footer text-muted">
-                        Posted on January 1, 2017 by
-                        <a href="#">Start Bootstrap</a>
+                    <div class="card-footer text-muted" *ngIf="user && detail">
+                        Posted on {{detail['pubat'] | date:'dd/MM/yyyy'}} by
+                        <a href="#">{{user['fn']}} {{user['ln']}}</a>
                     </div>
                 </div>
     
