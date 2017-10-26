@@ -60,7 +60,7 @@
                         <button href="#" class="btn btn-primary" (click) = "gotoDetail(item['posts']['uuid'])" >Read More &rarr;</button>
                     </div>
                     <div class="card-footer text-muted">
-                        Posted on {{item['posts']['pubat'] | date:'dd/MM/yyyy'}} by
+                        Posted on {{item['posts']['pubat'] | date:'MMM d, y'}} by
                         <a href="#">{{item['fn']}} {{item['ln']}}</a>
                     </div>
                 </div>

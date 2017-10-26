@@ -67,7 +67,7 @@
                                                 {{item['email']}}
                                             </div>
                                             <div class="commentText">
-                                                <p class="">{{item['comment']}}</p> <span class="date sub-text">on March 5th, 2014</span>
+                                                <p class="">{{item['comment']}}</p> <span class="date sub-text">{{comments['pubat'] | date:'dd/MM/yyyy'}}</span>
     
                                             </div>
                                         </li>
@@ -91,7 +91,7 @@
                         </form>
                     </div>
                     <div class="card-footer text-muted" *ngIf="user && detail">
-                        Posted on {{detail['pubat'] | date:'dd/MM/yyyy'}} by
+                        Posted on {{detail['pubat'] | date:'MM/dd/yyyy'}} by
                         <a href="#">{{user['fn']}} {{user['ln']}}</a>
                     </div>
                 </div>
