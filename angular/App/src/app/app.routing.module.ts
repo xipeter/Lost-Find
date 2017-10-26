@@ -6,7 +6,11 @@ import { HomeComponent } from './home.component';
 import { LoginComponent } from './login.component';
 import {SignupComponent} from "./signup.component";
 import { DetailCompenent } from './detail.component';
+<<<<<<< HEAD
 import { AuthGuard } from './auth-guard.service';
+=======
+import {NewpostComponent} from "./newpost.component";
+>>>>>>> e5cfe03ec681c7d5e0a492d11a9974b3169a0692
 
 
 const route:Routes=[
@@ -29,7 +33,11 @@ const route:Routes=[
     },{
         path:'detail/:id',
         component:DetailCompenent
+    },{
+        path:'newpost',
+        component:NewpostComponent
     }
+
 ]
 
 @NgModule({

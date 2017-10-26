@@ -64,13 +64,22 @@ db.users.find({posts:{$match:{"type":0}}},{posts:1}).pretty();
 
 db.users.find({"posts.type":0},{"posts":{"$slice":[0,1]},posts:1,_id:0}).pretty();
 
+db.users.find({"posts.uuid":"28d309d0-b9c3-11e7-8970-c1888625cc12"},{"posts":{"$slice":[0,1]},posts:1,_id:0}).pretty();
 
-//ok
+
+
+//ok 帖子为0的列表
 db.users.aggregate({"$unwind":"$posts"},{"$match":{"posts.type":0}})
+
+//根据uuid查询单个post
+db.users.aggregate({"$unwind":"$posts"},{"$match":{"posts.uuid":"28d309d0-b9c3-11e7-8970-c1888625cc12"}})
+
 
 //ok 指定字段
 db.users.aggregate({"$unwind":"$posts"},{"$match":{"posts.type":0}},{$project:{"posts":1,"_id":0}});
 
+//ok 查询comments
+db.users.aggregate({"$unwind":"$posts"},{"$match":{"posts.uuid":"28d309d0-b9c3-11e7-8970-c1888625cc12"}},{$project:{"comments":1,"_id":0}});
 
 
 db.users.update({"email":"baoxianjian@gmail.com"},{$set:{posts:[{xxx:'aaa'}]}});
@@ -90,6 +99,10 @@ db.users.update({"email":"baoxianjian@gmail.com"},{$addToSet:{posts:{
 		}
 	}
 });
+
+//修改帖子状态
+db.users.update({"posts.uuid":"981677a0-b9c3-11e7-8f5e-bd481da014f0"}, {$set:{"posts.$.status":2}});
+
 
 //增加评论
 db.users.update({"email":"baoxianjian@gmail.com"},{$addToSet:{posts:{

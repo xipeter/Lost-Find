@@ -16,11 +16,15 @@ import {User} from "./user";
 import {UserService} from "./user.service";
 import { DetailCompenent } from './detail.component';
 import { HomeService } from './home.service';
+<<<<<<< HEAD
 import { AuthGuard } from './auth-guard.service';
+=======
+import {NewpostComponent} from "./newpost.component";
+>>>>>>> e5cfe03ec681c7d5e0a492d11a9974b3169a0692
 
 @NgModule({
   declarations: [
-    AppComponent,HomeComponent,LoginComponent,SignupComponent,DetailCompenent
+    AppComponent,HomeComponent,LoginComponent,SignupComponent,DetailCompenent,NewpostComponent
   ],
   imports: [
 
