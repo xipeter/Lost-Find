@@ -20,7 +20,10 @@ export class SignupComponent {
 
     imagePath = '/assets/img/signup.jpg';
 
+    ret:ReturnObj;
+
     constructor(
+        private user: User,
         private userService: UserService,
         private http: HttpClient,
         private router: Router,
@@ -42,22 +45,66 @@ export class SignupComponent {
 
     register(form) {
 
-        let user = {
-            fn: form.value.firstName,
-            ln: form.value.lastName,
-            email: form.value.email,
-            pwd: form.value.password
-        }
+        this.user.fn = form.firstName;
+        this.user.ln = form.lastName;
+        this.user.email = form.email;
+        this.user.pwd = form.password;
 
+        console.log(this.ret);
+
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+        this.http.post('http://155.254.33.141:3000/api/users', JSON.stringify(this.user))
+=======
         this.http.post('http://155.254.33.141:3000/api/users', user)
+>>>>>>> a274fdc5490aaec6fa2a73f22ca5a69c71a165e4
+=======
+        this.http.post('http://155.254.33.141:3000/api/users', this.user)
+>>>>>>> parent of 3db68c2... Fix user object in signup component
+=======
+        this.http.post('http://155.254.33.141:3000/api/users', this.user)
+>>>>>>> parent of 3db68c2... Fix user object in signup component
+=======
+        this.http.post('http://155.254.33.141:3000/api/users', this.user)
+>>>>>>> parent of 3db68c2... Fix user object in signup component
+=======
+        this.http.post('http://155.254.33.141:3000/api/users', this.user)
+>>>>>>> parent of 3db68c2... Fix user object in signup component
             .subscribe(
                 data => {
                     if(data['status'] == 1){
                         this.returnObj.code = 1;
                         this.returnObj.Message = 'Sign up succeed!';
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+                        console.log(data);
+                        // this.router.navigate(['/home']);
+=======
                         // this.router.navigate(['/home']);
                         console.log(data);
+<<<<<<< HEAD
                         
+=======
+>>>>>>> a274fdc5490aaec6fa2a73f22ca5a69c71a165e4
+=======
+                        this.router.navigate(['/home']);
+>>>>>>> parent of 3db68c2... Fix user object in signup component
+=======
+                        this.router.navigate(['/home']);
+>>>>>>> parent of 3db68c2... Fix user object in signup component
+=======
+                        this.router.navigate(['/home']);
+>>>>>>> parent of 3db68c2... Fix user object in signup component
+=======
+                        this.router.navigate(['/home']);
+>>>>>>> parent of 3db68c2... Fix user object in signup component
+>>>>>>> d2b507b513ee4ad845d37739bd9ba24a807c97b2
 
                     }else{
                         this.returnObj.code = 0;
