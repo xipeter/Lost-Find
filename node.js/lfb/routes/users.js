@@ -65,6 +65,12 @@ router.get('/posts/type/:type', function(req, res, next) {
 	dao.getAllPosts(type,a=>{res.send(a)}); //mongo db
 });
 
+/* GET posts by status */
+router.get('/posts/status/:sta', function(req, res, next) {
+	const sta = req.params.sta;
+	dao.getAllPostsByStatus(sta,a=>{res.send(a)}); //mongo db
+});
+
 
 /* GET post by uuid */
 router.get('/posts/:id', function(req, res, next) {
@@ -109,7 +115,7 @@ router.post('/posts/:pid/comments', function(req, res, next) {
 
 
 
-/* PUT user. */
+/* PUT change status of posts. */
 router.put('/posts/:id', function(req, res, next) {  
 	var id = req.params.id;
 	var body = req.body;
