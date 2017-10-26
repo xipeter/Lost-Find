@@ -35,11 +35,11 @@ a.nav-link {
   font-size: initial;
 }
 
-a#home, a#signUp, a#signIn {
+a#home, a#signUp, a#signIn, a#newPost {
   color: #fff;
 }
 
-a#home-hover:hover, a#signIn-hover:hover, a#signUp-hover:hover, a#signOut-hover:hover {
+a#home-hover:hover, a#signIn-hover:hover, a#signUp-hover:hover, a#signOut-hover:hover, a#newPost-hover:hover {
   color: #E3EFF3;
 }
 

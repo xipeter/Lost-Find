@@ -20,10 +20,7 @@ export class SignupComponent {
 
     imagePath = '/assets/img/signup.jpg';
 
-    ret:ReturnObj;
-
     constructor(
-        private user: User,
         private userService: UserService,
         private http: HttpClient,
         private router: Router,
@@ -45,20 +42,22 @@ export class SignupComponent {
 
     register(form) {
 
-        this.user.fn = form.firstName;
-        this.user.ln = form.lastName;
-        this.user.email = form.email;
-        this.user.pwd = form.password;
+        let user = {
+            fn: form.value.firstName,
+            ln: form.value.lastName,
+            email: form.value.email,
+            pwd: form.value.password
+        }
 
-        console.log(this.ret);
-
-        this.http.post('http://155.254.33.141:3000/api/users', this.user)
+        this.http.post('http://155.254.33.141:3000/api/users', user)
             .subscribe(
                 data => {
                     if(data['status'] == 1){
                         this.returnObj.code = 1;
                         this.returnObj.Message = 'Sign up succeed!';
-                        this.router.navigate(['/home']);
+                        // this.router.navigate(['/home']);
+                        console.log(data);
+
 
                     }else{
                         this.returnObj.code = 0;

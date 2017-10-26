@@ -7,11 +7,17 @@ import { LoginComponent } from './login.component';
 import {SignupComponent} from "./signup.component";
 import { DetailCompenent } from './detail.component';
 
+import { AuthGuard } from './auth-guard.service';
+
+import {NewpostComponent} from "./newpost.component";
+
+
 
 const route:Routes=[
     {
         path:'home',
-        component:HomeComponent
+        component:HomeComponent,
+        canActivate:[AuthGuard]
     },{
         path:'',
         redirectTo:'/home',
@@ -27,7 +33,12 @@ const route:Routes=[
     },{
         path:'detail/:id',
         component:DetailCompenent
+    },{
+        path:'newpost',
+        component:NewpostComponent,
+        canActivate:[AuthGuard]
     }
+
 ]
 
 @NgModule({

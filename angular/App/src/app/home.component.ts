@@ -5,6 +5,7 @@ import { ReturnObj } from './returnobj';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
+import { AuthService } from './auth.service';
 @Component({
     selector:'home',
     templateUrl:'home.html',
@@ -19,7 +20,8 @@ export class HomeComponent implements OnInit {
     }
     ret:ReturnObj;
     list;
-    constructor(private service: HomeService,private http:HttpClient,private router:Router){}
+    
+    constructor(private service: HomeService,private http:HttpClient,private router:Router,private auth:AuthService){}
     showPost():void{
         console.log('hellohome');
         this.http.get('http://155.254.33.141:3000/api/users/posts/type/0').subscribe(
@@ -32,6 +34,10 @@ export class HomeComponent implements OnInit {
         );
 
     }
+    signout(){
+        this.auth.logout();
+    }
+
     gotoDetail(id):void{
         // console.log(id);
         this.router.navigate(['/detail',id]);

@@ -17,9 +17,14 @@ import {UserService} from "./user.service";
 import { DetailCompenent } from './detail.component';
 import { HomeService } from './home.service';
 
+import { AuthGuard } from './auth-guard.service';
+
+import {NewpostComponent} from "./newpost.component";
+
+
 @NgModule({
   declarations: [
-    AppComponent,HomeComponent,LoginComponent,SignupComponent,DetailCompenent
+    AppComponent,HomeComponent,LoginComponent,SignupComponent,DetailCompenent,NewpostComponent
   ],
   imports: [
 
@@ -31,7 +36,7 @@ import { HomeService } from './home.service';
 
 BrowserModule,AppRouting,HttpClientModule,FormsModule,ReactiveFormsModule
   ],
-  providers: [AuthService,ReturnObj,User,UserService,HomeService
+  providers: [AuthService,ReturnObj,User,UserService,HomeService,AuthGuard,
     // {
     //   provide:HTTP_INTERCEPTORS,
     //   useClass:AuthInterceptor,
