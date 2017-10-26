@@ -44,15 +44,15 @@
                             <label for="section" class="post-label">Section: </label>
                             <select required ngModel #section="ngModel" name="section" id="section"
                                     (ngModel)="sections">
-                                <option *ngFor="let section of sections">{{section}}</option>
+                                <option *ngFor="let section of sections" [selected]="section == 'lost'">{{section}}</option>
                             </select>
                             <br>
                             <label for="location" class="post-label">Location: </label>
                             <input type="text" class="post-input" id="location"><br>
                             <label for="key_time" class="post-label">{{section}} Time: </label>
                             <input ngModel #keyTime="ngModel" name="key_time" type="date" class="post-input" id="key_time"><br>
-                            <label for="description" class="detail-label">Description: </label><br>
-                            <textarea ngModel #description="ngModel" class="detail-desc" name="description" id="description" placeholder="Input details here."></textarea>
+                            <label for="description" class="post-label">Description: </label><br>
+                            <textarea ngModel #description="ngModel" class="post-desc" name="description" id="description" placeholder="Input details here."></textarea>
                             <br>
                             <button class="btn btn-primary" style="width: 260px">Submit post</button>
 
