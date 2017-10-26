@@ -33,6 +33,10 @@ export class HomeComponent implements OnInit {
             }
         );
 
+        
+
+
+
     }
     signout(){
         this.auth.logout();
