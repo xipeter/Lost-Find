@@ -17,7 +17,7 @@ const route:Routes=[
     {
         path:'home',
         component:HomeComponent,
-        canActivate:[AuthGuard]
+        
     },{
         path:'',
         redirectTo:'/home',
@@ -32,7 +32,8 @@ const route:Routes=[
         component: SignupComponent
     },{
         path:'detail/:id',
-        component:DetailCompenent
+        component:DetailCompenent,
+        canActivate:[AuthGuard]
     },{
         path:'newpost',
         component:NewpostComponent,
