@@ -6,11 +6,13 @@ import { AuthService } from './auth.service';
 export class AuthGuard implements CanActivate {
     constructor(private auth: AuthService, private router: Router) { }
     canActivate() {
-        if (this.auth.loggedIn()) {
+        if (localStorage.getItem('currentUser')) {
+            // logged in so return true
             return true;
-        } else {
-            this.router.navigateByUrl('/unauthorized');
-            return false;
         }
+ 
+        // not logged in so redirect to login page with the return url
+        this.router.navigate(['/login']);
+        return false;
     }
 }

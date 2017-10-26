@@ -4,13 +4,14 @@ import 'rxjs/add/operator/map';
 import { HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ReturnObj } from './returnobj';
+import { Credentials } from './login.component';
 
 @Injectable()
 export class AuthService {
     constructor(private http: HttpClient,private returnobj :ReturnObj) { }
-    login(credentials)   {
+    login(credentials:Credentials)   {
         
-        
+        localStorage.setItem('currentUser', JSON.stringify(credentials));
             
            
             
@@ -19,9 +20,9 @@ export class AuthService {
 
     loggedIn() {
         //return tokenNotExpired();
-        return  localStorage.getItem('token');
+        return  localStorage.getItem('currentUser');
     }
     logout() { 
-        localStorage.removeItem('token'); 
+        localStorage.removeItem('currentUser'); 
     }
 }
