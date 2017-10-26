@@ -67,7 +67,7 @@ export class DetailCompenent implements OnInit {
     addComment(){
         console.log(this.comment);
 
-        this.http.post('：http://155.254.33.141:9000/api/users/posts/' + this.user['posts']['uuid'] + '/comments',
+        this.http.post('http://155.254.33.141:9000/api/users/posts/' + this.user['posts']['uuid'] + '/comments',
             {email:this.currentUser['email'], comment:this.comment})
             .subscribe(
                 data => {
