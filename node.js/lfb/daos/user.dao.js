@@ -63,7 +63,7 @@ var userDAO = function () {
 		
 		dbo.execute(db=>{return db.collection(tableName)
 		.aggregate(
-				[{"$unwind":"$posts"},{"$match":{"posts.type":parseInt(type)}},{"$project":{"posts":1,"_id":0,"password":0}}],
+				[{"$unwind":"$posts"},{"$match":{"posts.type":parseInt(type)}},{"$project":{"posts":1,"_id":0,"password":0}},{$sort:{"posts.pubat":-1}}],
 				(err, result)=>{callback(result);}
 			);
 		},null);
@@ -72,7 +72,7 @@ var userDAO = function () {
 	this.getAllPosts = function(callback){
 		dbo.execute(db=>{return db.collection(tableName)
 		.aggregate(
-				[{"$unwind":"$posts"},{"$project":{"password":0}}],
+				[{"$unwind":"$posts"},{"$project":{"password":0}},{$sort:{"posts.pubat":-1}}],
 				(err, result)=>{callback(result);}
 			);
 		},null);
@@ -82,7 +82,7 @@ var userDAO = function () {
 		type=parseInt(type);
 		dbo.execute(db=>{return db.collection(tableName)
 		.aggregate(
-				[{"$unwind":"$posts"},{"$match":{"posts.type":type}},{$project:{"password":0}}],
+				[{"$unwind":"$posts"},{"$match":{"posts.type":type}},{$project:{"password":0}},{$sort:{"posts.pubat":-1}}],
 				(err, result)=>{callback(result);}
 			);
 		},null);
@@ -92,7 +92,7 @@ var userDAO = function () {
 		status=parseInt(status);
 		dbo.execute(db=>{return db.collection(tableName)
 		.aggregate(
-				[{"$unwind":"$posts"},{"$match":{"posts.status":status}},{$project:{"password":0}}],
+				[{"$unwind":"$posts"},{"$match":{"posts.status":status}},{$project:{"password":0}},{$sort:{"posts.pubat":-1}}],
 				(err, result)=>{callback(result);}
 			);
 		},null);
