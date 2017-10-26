@@ -56,10 +56,14 @@ export class SignupComponent {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         this.http.post('http://155.254.33.141:3000/api/users', JSON.stringify(this.user))
 =======
         this.http.post('http://155.254.33.141:3000/api/users', user)
 >>>>>>> a274fdc5490aaec6fa2a73f22ca5a69c71a165e4
+=======
+        this.http.post('http://155.254.33.141:3000/api/users', this.user)
+>>>>>>> parent of 3db68c2... Fix user object in signup component
 =======
         this.http.post('http://155.254.33.141:3000/api/users', this.user)
 >>>>>>> parent of 3db68c2... Fix user object in signup component
@@ -78,12 +82,16 @@ export class SignupComponent {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                         console.log(data);
                         // this.router.navigate(['/home']);
 =======
                         // this.router.navigate(['/home']);
                         console.log(data);
 >>>>>>> a274fdc5490aaec6fa2a73f22ca5a69c71a165e4
+=======
+                        this.router.navigate(['/home']);
+>>>>>>> parent of 3db68c2... Fix user object in signup component
 =======
                         this.router.navigate(['/home']);
 >>>>>>> parent of 3db68c2... Fix user object in signup component
