@@ -55,8 +55,8 @@ export class SignupComponent {
                     if(data['status'] == 1){
                         this.returnObj.code = 1;
                         this.returnObj.Message = 'Sign up succeed!';
-                        // this.router.navigate(['/home']);
-                        console.log(data);
+                        this.router.navigate(['/home']);
+                        // console.log(data);
 
 
                     }else{

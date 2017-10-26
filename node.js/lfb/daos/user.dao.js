@@ -71,10 +71,19 @@ var userDAO = function () {
 	
 	this.getAllPosts = function(type, callback){
 		type=parseInt(type);
-		var condition={"posts.type":type};
 		dbo.execute(db=>{return db.collection(tableName)
 		.aggregate(
-				[{"$unwind":"$posts"},{"$match":{"posts.type":parseInt(type)}}],
+				[{"$unwind":"$posts"},{"$match":{"posts.type":type}}],
+				(err, result)=>{callback(result);}
+			);
+		},null);
+	}
+	
+	this.getAllPostsByStatus = function(status, callback){
+		status=parseInt(status);
+		dbo.execute(db=>{return db.collection(tableName)
+		.aggregate(
+				[{"$unwind":"$posts"},{"$match":{"posts.status":status}}],
 				(err, result)=>{callback(result);}
 			);
 		},null);

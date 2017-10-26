@@ -117,8 +117,21 @@ input#first_name, input#last_name, input#email, input#confirm_email, input#passw
   display:inline-block;
 }
 
-label.detail-label {
+label.detail-label, label.post-label {
   color: #00aceb;
+}
+
+label.post-label {
+  width: 150px;
+}
+
+textarea {
+  width: 310px;
+  height: auto;
+}
+
+select#section, input#location {
+  width: 156px;
 }
 
 .commentBox {
