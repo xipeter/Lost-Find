@@ -20,7 +20,8 @@ export class HomeComponent implements OnInit {
     }
     ret:ReturnObj;
     list;
-    
+    findImg = '/assets/img/found.jpg';
+    lostImg = '/assets/img/lost.png';
     constructor(private service: HomeService,private http:HttpClient,private router:Router,private auth:AuthService){}
     showPost():void{
         console.log('hellohome');
