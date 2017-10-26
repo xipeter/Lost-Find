@@ -68,8 +68,17 @@ var userDAO = function () {
 			);
 		},null);
 	}
+
+	this.getAllPosts = function(callback){
+		dbo.execute(db=>{return db.collection(tableName)
+		.aggregate(
+				[{"$unwind":"$posts"}],
+				(err, result)=>{callback(result);}
+			);
+		},null);
+	}
 	
-	this.getAllPosts = function(type, callback){
+	this.getAllPostsByType = function(type, callback){
 		type=parseInt(type);
 		dbo.execute(db=>{return db.collection(tableName)
 		.aggregate(
