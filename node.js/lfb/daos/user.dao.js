@@ -16,15 +16,15 @@ var userDAO = function () {
 //-----------------------user operations---------------------------------
 	
     this.getUsers =  async function (callback) {
-		dbo.execute(db=>{return db.collection(tableName).find({},{password:0}).toArray();},callback);
+		dbo.execute(db=>{return db.collection(tableName).find({}).toArray();},callback);
     }
 
 	this.getUserByEmailAndPwd = function (email,pwd,callback) {
-		dbo.execute(db=>{return db.collection(tableName).findOne({email:email,password:pwd},{posts:0,password:0});},callback);
+		dbo.execute(db=>{return db.collection(tableName).findOne({email:email,password:pwd},{posts:0});},callback);
     }
 	
 	this.getUserByEmail =function(email, callback){
-		dbo.execute(db=>{return db.collection(tableName).findOne({email:email},{posts:0,password:0});},callback);
+		dbo.execute(db=>{return db.collection(tableName).findOne({email:email},{posts:0});},callback);
 	}
 	
 	this.addUser = function(user,callback)
@@ -68,17 +68,8 @@ var userDAO = function () {
 			);
 		},null);
 	}
-
-	this.getAllPosts = function(callback){
-		dbo.execute(db=>{return db.collection(tableName)
-		.aggregate(
-				[{"$unwind":"$posts"}],
-				(err, result)=>{callback(result);}
-			);
-		},null);
-	}
 	
-	this.getAllPostsByType = function(type, callback){
+	this.getAllPosts = function(type, callback){
 		type=parseInt(type);
 		dbo.execute(db=>{return db.collection(tableName)
 		.aggregate(
@@ -103,9 +94,9 @@ var userDAO = function () {
 		if(!id) {callback({});return;}
 		dbo.execute(db=>{return db.collection(tableName)
 		.aggregate(
-				[{"$unwind":"$posts"},{"$match":{"posts.uuid":id}},{$project:{"password":0}}],
+				[{"$unwind":"$posts"},{"$match":{"posts.uuid":id}},{"$project":{"posts":1,"_id":0}}],
 				(err, result)=>{
-					if(result && result.length>0){callback(result[0]);return;}
+					if(result && result.length>0){callback(result[0].posts);return;}
 					callback({});
 				}
 			);
