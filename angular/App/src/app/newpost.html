@@ -1,0 +1,147 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">Lost & Found Board</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/home" id="home-hover">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/home" id="signOut-hover">Sign out</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/newpost" id="newPost">Post</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+
+    <div class="row">
+
+        <!-- Blog Entries Column -->
+        <div class="col-md-8">
+
+            <h1 class="my-4">New Post
+                <!--<small>Secondary Text</small>-->
+            </h1>
+
+            <!-- Blog Post -->
+            <div class="card mb-4">
+                <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+                <div class="card-body">
+                    <!--<h2 class="card-title">&#128148 Red scarf lost</h2>-->
+                    <form #postForm="ngForm" (ngSubmit)="newPost(postForm)" class="post-form">
+                        <div class="form-group">
+                            <label for="status" class="post-label">Status: </label>
+                            <span class="post-span" id="status">New Open</span><br>
+                            <label for="section" class="post-label">Section: </label>
+                            <select required ngModel #section="ngModel" name="section" id="section"
+                                    (ngModel)="sections">
+                                <option *ngFor="let section of sections">{{section}}</option>
+                            </select>
+                            <br>
+                            <label for="location" class="post-label">Location: </label>
+                            <input type="text" class="post-input" id="location"><br>
+                            <label for="key_time" class="post-label">{{section}} Time: </label>
+                            <input ngModel #keyTime="ngModel" name="key_time" type="date" class="post-input" id="key_time"><br>
+                            <label for="description" class="detail-label">Description: </label><br>
+                            <textarea ngModel #description="ngModel" class="detail-desc" name="description" id="description" placeholder="Input details here."></textarea>
+                            <br>
+                            <button class="btn btn-primary" style="width: 260px">Submit post</button>
+
+                        </div>
+
+
+                        <br>
+                        <!--<button class="btn btn-primary" (click)='goback()' >Go Back &larr;</button>-->
+                    </form>
+                </div>
+                <div class="card-footer text-muted">
+                    Posted on January 1, 2017 by
+                    <a href="#">Start Bootstrap</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+
+            <!-- Search Widget -->
+            <div class="card my-4">
+                <h5 class="card-header">Search</h5>
+                <div class="card-body">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for...">
+                        <span class="input-group-btn">
+                      <button class="btn btn-secondary" type="button">Go!</button>
+                    </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categories Widget -->
+            <div class="card my-4">
+                <h5 class="card-header">Categories</h5>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled mb-0">
+                                <li>
+                                    <a href="#">Web Design</a>
+                                </li>
+                                <li>
+                                    <a href="#">HTML</a>
+                                </li>
+                                <li>
+                                    <a href="#">Freebies</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled mb-0">
+                                <li>
+                                    <a href="#">JavaScript</a>
+                                </li>
+                                <li>
+                                    <a href="#">CSS</a>
+                                </li>
+                                <li>
+                                    <a href="#">Tutorials</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Side Widget -->
+            <div class="card my-4">
+                <h5 class="card-header">Side Widget</h5>
+                <div class="card-body">
+                    You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- /.row -->
+
+</div>
+<!-- /.container -->
+
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
+    </div>
+    <!-- /.container -->
+</footer>

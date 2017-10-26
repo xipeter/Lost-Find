@@ -6,6 +6,7 @@ import { HomeComponent } from './home.component';
 import { LoginComponent } from './login.component';
 import {SignupComponent} from "./signup.component";
 import { DetailCompenent } from './detail.component';
+import {NewpostComponent} from "./newpost.component";
 
 
 const route:Routes=[
@@ -27,7 +28,11 @@ const route:Routes=[
     },{
         path:'detail/:id',
         component:DetailCompenent
+    },{
+        path:'newpost',
+        component:NewpostComponent
     }
+
 ]
 
 @NgModule({

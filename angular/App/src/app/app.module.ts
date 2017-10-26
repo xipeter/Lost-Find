@@ -16,10 +16,11 @@ import {User} from "./user";
 import {UserService} from "./user.service";
 import { DetailCompenent } from './detail.component';
 import { HomeService } from './home.service';
+import {NewpostComponent} from "./newpost.component";
 
 @NgModule({
   declarations: [
-    AppComponent,HomeComponent,LoginComponent,SignupComponent,DetailCompenent
+    AppComponent,HomeComponent,LoginComponent,SignupComponent,DetailCompenent,NewpostComponent
   ],
   imports: [
 
